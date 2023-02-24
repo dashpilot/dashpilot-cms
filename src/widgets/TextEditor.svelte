@@ -168,8 +168,6 @@ button:hover{
     border-bottom-right-radius: 0;
   }
   
-  .editor{
-    margin-bottom: 20px;
-  }
+  
 </style>
 
