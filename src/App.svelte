@@ -15,6 +15,10 @@
   let route;
   let tab;
   let notfound;
+  
+  let loading;
+  let saving;
+  let saved;
  
   let posts;
   let curCat = 'home';
@@ -242,7 +246,11 @@
     {/if}
   
     {:else if route=='post'}
-   <header><h5>Edit Post</h5></header>
+   <header><h5>Edit Post</h5>
+ 
+ <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+ 
+ </header>
       
       <div class="row g-0">
       <div class="col-md-6">
@@ -352,10 +360,7 @@
     background-color: #666BEF;
     color: white;
   }
-  
-
-  
-    
+ 
   .col-categories ul{
     list-style-type: none;
     padding: 0;
@@ -380,8 +385,6 @@
   .col-categories{
   background-color: white;
   }
-  
-  
   
   .content{
     padding: 20px;
@@ -410,5 +413,7 @@
     border-radius: 8px;
     margin-top: 10px;
   }
+  
+  
 
 </style>

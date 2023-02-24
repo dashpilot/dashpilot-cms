@@ -34,6 +34,11 @@ body,
 
 h5 {
   margin-top: 2px;
+  float: left;
+}
+
+.btn-save {
+  float: right;
 }
 
 .ProseMirror {
@@ -67,6 +72,13 @@ label {
 .btn.btn-outline-secondary i {
   margin: 0;
   font-size: 12px;
+}
+
+.btn.btn-dark {
+  color: #fff;
+  background-color: #23272b;
+  border-color: #1d2124;
+  padding: 3px 20px 6px 20px;
 }
 
 @media only screen and (max-width: 750px) {
