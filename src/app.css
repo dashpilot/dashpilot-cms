@@ -62,7 +62,7 @@ label {
 }
 
 .btn.btn-outline-secondary {
-  padding: 3px 11px 5px 11px !important;
+  padding: 1px 11px 5px 11px !important;
   border: 1px solid #d2d2d2;
 }
 .btn-outline-secondary:hover {
@@ -79,13 +79,31 @@ label {
   background-color: #23272b;
   border-color: #1d2124;
   padding: 4px 20px 7px 20px;
+}
+
+.btn-save {
   position: absolute;
   top: 9px;
   right: 20px;
 }
 
+a .fa-solid {
+  margin-right: 7px;
+}
+
 @media only screen and (max-width: 750px) {
   .col-categories {
     height: auto !important;
+  }
+  .mob-hide {
+    display: none;
+  }
+
+  nav {
+    width: 55px !important;
+  }
+
+  main {
+    padding-left: 55px !important;
   }
 }

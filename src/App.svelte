@@ -172,15 +172,17 @@
   
   <ul>
     
-    <li><a href="/" class:active={tab === 'dashboard'}  data-navigo>Dashboard</a></li>
+    <li>
+      
+      <a href="/" class:active={tab === 'dashboard'}  data-navigo><i class="fa-solid fa-gauge"></i> <span class="mob-hide">Dashboard</span></a></li>
 
-    <li><a href="/category/home" class:active={tab === 'posts'}  data-navigo>Posts</a></li>
+    <li><a href="/category/home" class:active={tab === 'posts'}  data-navigo><i class="fa-solid fa-bolt"></i> <span class="mob-hide">Posts</span></a></li>
     
-    <li><a href="/settings" class:active={tab === 'settings'}  data-navigo>Settings</a></li>
+    <li><a href="/settings" class:active={tab === 'settings'}  data-navigo><i class="fa-solid fa-gear"></i> <span class="mob-hide">Settings</span></a></li>
     
     
     
-    <li><a href="/account" class:active={tab === 'account'} data-navigo>Account</a></li>
+    <li><a href="/account" class:active={tab === 'account'} data-navigo><i class="fa-solid fa-user-astronaut"></i> <span class="mob-hide">Account</span></a></li>
 
   </ul>
   
@@ -304,11 +306,15 @@
      
      
      <div class="card m-auto" style="width: 18rem;">
+       
+       <div class="profile-pic">
+         <i class="fa-solid fa-user-astronaut"></i>
+       </div>
       
        <div class="card-body text-center">
          <h5 class="card-title text-capitalize">{cfg.site}</h5>
          <p class="card-text"><a href="{cfg.live_url}" target="_blank">{cfg.live_url}</a></p>
-         <a href="/api/logout" class="btn btn-primary">Sign Out</a>
+         <a href="/api/logout" class="btn btn-dark">Sign Out</a>
        </div>
      </div>
       
@@ -328,12 +334,12 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 150px;
+    width: 180px;
     background-color: #333333;
   }
   
   main{
-    padding-left: 150px;
+    padding-left: 180px;
   }
   
   header{
@@ -359,8 +365,8 @@
   
   nav ul li a{
     display: block;
-    padding: 10px;
-    padding-left: 25px;
+    padding: 15px;
+    padding-left: 20px;
     color: white;
   }
   
@@ -419,9 +425,24 @@
     border: 1px solid #d2d2d2;
     background-color: white;
     border-radius: 8px;
-    margin-top: 10px;
+    margin-top: 0px;
   }
   
+  .profile-pic{
+    text-align: center;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    border: 1px solid #d2d2d2;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-top: -50px;
+    background-color: white;
+  }
   
+  .profile-pic i{
+    font-size: 80px;
+    margin-top: 20px;
+  }
 
 </style>
