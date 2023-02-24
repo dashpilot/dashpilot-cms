@@ -16,6 +16,7 @@
   let tab;
   let notfound;
   
+  let showSave = false;
   let loading;
   let saving;
   let saved;
@@ -36,6 +37,8 @@
       console.log("home")
       route = '';
       tab = 'dashboard'
+      showSave = false;
+      
       update()
     });
     
@@ -45,7 +48,7 @@
       tab = 'posts'
       curCat = props.data.slug;
       posts = data.posts.filter(x=>x.category==props.data.slug)
-      
+      showSave = true;
       
       update()
     });
@@ -54,7 +57,7 @@
       route = 'post';
       tab = 'posts'
       curPost = props.data.slug;
-      console.log(props.data.slug)
+      showSave = true;
       
       update()
     });
@@ -62,7 +65,7 @@
     router.on("/settings", async function (props) {    
       route = false;
       tab = 'settings'
-      
+      showSave = true;
       
       update()
     });
@@ -71,6 +74,7 @@
     router.on("/account", async function (props) {    
       route = false;
       tab = 'account'
+      showSave = false;
       update()
     });
    
@@ -159,7 +163,9 @@
   
 </script>
 
+ {#if showSave}
  <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+ {/if}
 
 <nav>
   <header></header>
