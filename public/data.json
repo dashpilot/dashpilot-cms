@@ -1,0 +1,76 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "title": "Getting started with Sveltekit",
+      "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend, arcu ac mollis lacinia, nunc nisi sollicitudin mi, non vehicula tortor mauris quis diam. Sed odio libero, euismod eget massa ac, ultricies vulputate sapien. Sed imperdiet consequat sapien ut malesuada.</p><p>Duis eget efficitur nisi, posuere tempus quam. In sed varius velit. Nulla sit amet arcu luctus, faucibus tellus non, ullamcorper metus. Maecenas volutpat commodo laoreet. Donec augue neque, cursus eu tristique in, pharetra nec dui. Ut quis efficitur odio, tincidunt placerat eros.</p>",
+      "slug": "getting-started-with-sveltekit-1",
+      "category": "home",
+      "date": "2023-02-14",
+      "image": "https://api.eu-central-1.linodeobjects.com/frontsome/img/1676936954549.jpg",
+      "delete": "",
+      "gallery": [[]],
+      "code": "npm create svelte@latest my-app\ncd my-app\nnpm install\nnpm run dev -- --open",
+      "type": "post"
+    },
+    {
+      "id": "2",
+      "title": "About Frontsome",
+      "slug": "about-frontsome-2",
+      "category": "about",
+      "date": "2023-02-13",
+      "body": "<p>Frontsome is a collection of online tools, resources and tutorials for front-end developers, designers and webdesigners.</p>",
+      "image": "",
+      "delete": "",
+      "gallery": [[]],
+      "type": "post"
+    },
+    {
+      "id": "3",
+      "title": "Getting started with Sveltekit",
+      "slug": "getting-started-with-sveltekit-3",
+      "body": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eleifend, arcu ac mollis lacinia, nunc nisi sollicitudin mi, non vehicula tortor mauris quis diam. Sed odio libero, euismod eget massa ac, ultricies vulputate sapien. Sed imperdiet consequat sapien ut malesuada.</p><p>Duis eget efficitur nisi, posuere tempus quam. In sed varius velit. Nulla sit amet arcu luctus, faucibus tellus non, ullamcorper metus. Maecenas volutpat commodo laoreet. Donec augue neque, cursus eu tristique in, pharetra nec dui. Ut quis efficitur odio, tincidunt placerat eros.</p>",
+      "image": "",
+      "category": "blog",
+      "type": "post",
+      "date": "2023-02-20",
+      "delete": "",
+      "gallery": [],
+      "type": "post"
+    },
+    {
+      "id": "4",
+      "title": "Lorem ipsum",
+      "slug": "lorem-ipsum-4",
+      "category": "home",
+      "date": "2023-02-13",
+      "body": "<p>Frontsome is a collection of online tools, resources and tutorials for front-end developers, designers and webdesigners.</p>",
+      "image": "",
+      "delete": "",
+      "gallery": [[]],
+      "type": "post"
+    }
+  ],
+  "categories": [
+    { "id": "1", "title": "Home", "slug": "home", "type": "post" },
+    { "id": "2", "title": "About", "slug": "about", "type": "post" },
+    { "id": "3", "title": "Blog", "slug": "blog", "type": "post" },
+    { "id": "4", "title": "Tools", "slug": "tools", "type": "post" }
+  ],
+  "design": { "bgcolor": "#F7FCFA", "fgcolor": "#000000" },
+  "settings": { "title": "My Website", "image_width": "800" },
+  "category": "about",
+  "permissions": { "categories": true, "types": true, "settings": true },
+  "types": [
+    {
+      "id": "1",
+      "title": "Post",
+      "slug": "post",
+      "fields": [
+        { "title": "body", "description": "", "type": "rte" },
+        { "title": "gallery", "description": "", "type": "gal" },
+        { "title": "code", "description": "", "type": "txta" }
+      ]
+    }
+  ]
+}
