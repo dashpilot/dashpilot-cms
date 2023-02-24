@@ -159,6 +159,8 @@
   
 </script>
 
+ <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+
 <nav>
   <header></header>
   
@@ -248,7 +250,7 @@
     {:else if route=='post'}
    <header><h5>Edit Post</h5>
  
- <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+
  
  </header>
       
