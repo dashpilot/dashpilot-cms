@@ -201,15 +201,15 @@
   
   <div class="row">
     <div class="col-md-4">
-      <Card title="Posts" bind:number={data.posts.length} percent="33" icon="fa-chart-bar" />
+      <Card title="Posts" bind:number={data.posts.length} msg="&nbsp;in {data.categories.length} categories" icon="fa-bolt" icon2="fa-tag" />
       
     </div>
     <div class="col-md-4">
       
-      <Card title="Categories" bind:number={data.categories.length} percent="25" icon="fa-tag" />
+      <Card title="Visitors" number="47" msg="&nbsp;in the last 24 hours" icon="fa-tags" icon2="fa-clock" />
     </div>
     <div class="col-md-4">
-      <Card title="Posts" bind:number={data.posts.length} percent="33" icon="fa-chart-bar" />
+      <Card title="Version" number="0.4.3" msg="&nbsp;up to date" icon="fa-rocket" icon2="fa-check" />
       
     </div>
   </div>

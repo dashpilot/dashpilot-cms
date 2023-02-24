@@ -1,9 +1,9 @@
 <script>
 export let title;
 export let number;
-export let percent;
+export let msg;
 export let icon;	
-	
+export let icon2;
 </script>  
   
   
@@ -21,8 +21,8 @@ export let icon;
 		</div>
 	  </div>
 	  <p class="mt-3 mb-0 text-muted text-sm">
-		<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> {percent}%</span>
-		<span class="text-nowrap">Since last month</span>
+		<span class="text-success mr-2"><i class="fas {icon2}"></i> {@html msg}</span>
+		
 	  </p>
 	</div>
   </div>
