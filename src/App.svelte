@@ -260,14 +260,14 @@
  
  </header>
       
-      <div class="row g-0">
-      <div class="col-md-6">
+      <div class="row g-0 h-100">
+      <div class="col-md-6 h-100">
     
         <div class="content no-pad col-editor">
         <Editor bind:data bind:curPostId={curPost} />
         </div>
       </div>
-      <div class="col-md-6 preview-screen">
+      <div class="col-md-6 h-100 preview-screen">
      
         <Preview bind:data bind:curPost={curPost} />
       </div>
