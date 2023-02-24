@@ -24,7 +24,7 @@
   
   onMount(async () => {
     
-    const res = await fetch('/data.json');
+    const res = await fetch(cfg.dataPath);
     data = await res.json();
     console.log(data)
     
