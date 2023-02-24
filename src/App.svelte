@@ -140,7 +140,7 @@
     opts.path = "data.json";
     opts.type = 'json';
     opts.data = data;
-    call_api('api/save', opts).then(function(res) {
+    call_api('/api/save', opts).then(function(res) {
       if (res.status=='ok') {
         saving = false;
         saved = true;
