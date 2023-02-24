@@ -10,8 +10,6 @@
   
   import SortableList from "./lib/SortableList.svelte";
 
- 
-  
   let data;
   let router;
   let route;
