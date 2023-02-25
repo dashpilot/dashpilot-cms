@@ -19,12 +19,14 @@ const flipDurationMs = 300;
 	data.posts = items.concat(nothere);
   }
   
-  function deletePost(){
+  function deletePost(id){
 	  var sure = confirm("Are you sure you wish to delete this item?")
 	  if(sure){
 		  let index = data.posts.findIndex(x=>x.id==id);
+		  console.log(index)
 		  data.posts.splice(index, 1);
 		  data = data;
+		  items = data.posts.filter(x=>x.category==cat)
 	  }
   }
 </script>
@@ -42,7 +44,7 @@ const flipDurationMs = 300;
 			
 		</a></div>
 		<div class="col-3 text-end">
-			<button class="btn btn-outline-secondary btn-delete" on:click={deletePost}><i class="fas fa-trash"></i></button>
+			<button class="btn btn-outline-secondary btn-delete" on:click={()=>deletePost(item.id)}><i class="fas fa-trash"></i></button>
 			
 		</div>
 	</div>	
