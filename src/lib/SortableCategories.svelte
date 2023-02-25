@@ -2,8 +2,8 @@
 import {dndzone} from "svelte-dnd-action";
 import {flip} from "svelte/animate";
 
-export let items;
 export let data;
+let items = data.categories;
 
 
 const flipDurationMs = 300;
@@ -33,7 +33,7 @@ const flipDurationMs = 300;
 	<li class="list-group-item item-list" animate:flip="{{duration: flipDurationMs}}">
 		
 	<div class="row">
-		<div class="col-9 text-truncate"><a href="/category/{item.id}" data-navigo>
+		<div class="col-9 text-truncate"><a href="/category/{item.id}/edit" data-navigo>
 			
 			{#if item.title==''}Untitled{:else}{item.title}{/if}
 			

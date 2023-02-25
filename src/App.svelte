@@ -27,6 +27,7 @@
   let catSlug = 'home';
   let cat;
   let postId;
+  let action = 'edit';
   
   let latest;
   let count;
@@ -89,10 +90,13 @@
       hydrate()
     });
     
-    router.on("/category/:id", async function (props) {    
+   
+  
+    router.on("/category/:id/:action", async function (props) {    
       show = 'category'
       tab = 'categories'
       showSave = true;
+      action = props.data.action;
       let catId = props.data.id;
       cat = data.categories.filter(x=>x.id==catId)[0];
       if(!cat){
@@ -101,7 +105,8 @@
       
       hydrate()
     });
-    
+
+   
     router.on("/settings", async function (props) {    
       show = 'settings'
       tab = 'settings'
@@ -131,8 +136,10 @@
   });  
   
   async function hydrate(){
+    
     // make sure navigo updates the links on the page after the page has rendered
     await tick();
+   
     router.updatePageLinks()
   }
  
@@ -146,7 +153,14 @@
     return highest_id+1;
   }
   
+  function newCatId(){
+    let highest_id = Math.max(...data.categories.map(x => x.id));
+    return highest_id+1;
+  }
+  
   async function addPost(){
+    
+ 
     
     let cat = data.categories.filter(x=>x.slug==catSlug)[0];
     let curType = data.types.filter(x=>x.slug==cat.type)[0];
@@ -180,25 +194,35 @@
   }
   
   async function addCat(){
+    
+   
 
     let newCat = {}
-    let id = newId();
+    let id = newCatId();
     
     newCat.title = "";
     newCat.id = id;
     newCat.type = "post"
     
-    newCat.slug = slugify("untitled", id);
+    newCat.slug = slugify("category", id);
     data.categories.push(newCat)
     data = data;
    
     hydrate()
-    router.navigate('/category/'+id)
+    router.navigate('/category/'+id+'/add')
+    
+  
   }
   
   function updateCatSlug(id){
+
     let index = data.categories.findIndex(x=>x.id==id)
-    data.categories[index].slug = slugify(data.categories[index].title, id);
+    let slug = slugify(data.categories[index].title, false);
+    console.log(slug)
+    data.categories[index].slug = slug;
+    document.getElementById('cat-slug').innerText = slug;
+    
+  
   }
   
   function save(){
@@ -362,7 +386,7 @@
          
          <button class="btn btn-dark mb-3" on:click={addCat}><i class="fas fa-plus"></i></button>
          
-         <SortableCategories bind:items={data.categories} bind:data />
+         <SortableCategories bind:data />
         
         
        </div>
@@ -374,7 +398,7 @@
     
     
        <header>
-      <h5>Edit Category</h5>
+      <h5>{#if action=='add'}Add{:else}Edit{/if} Category</h5>
        </header>
        
        
@@ -384,7 +408,20 @@
          <div class="content no-pad col-editor">
        
        <label>Category title</label>
+       
+       {#if action=='add'}
         <input type="text" class="form-control" bind:value={cat.title} on:keyup={()=>updateCatSlug(cat.id)}>
+        
+        <label>Category Slug</label>
+        <small>You can not change this afterwards</small>
+        <div class="alert alert-success" id="cat-slug"></div>
+        {:else}
+        <input type="text" class="form-control" bind:value={cat.title}>
+        
+        
+        {/if}
+        
+       
        
          </div>
        </div>

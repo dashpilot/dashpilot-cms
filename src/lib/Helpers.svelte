@@ -21,6 +21,11 @@
 		  .replace(/\s+/g, '-') // collapse whitespace and replace by -
 		  .replace(/-+/g, '-'); // collapse dashes
   
+  	if(!id){
+	  return str;
+	}else{
 	  return str+"-"+id;
+	}
+	  
   }
 </script>

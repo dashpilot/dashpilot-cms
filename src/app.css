@@ -91,6 +91,12 @@ a .fa-solid {
   margin-right: 7px;
 }
 
+small {
+  display: block;
+  margin-bottom: 10px;
+  color: #777;
+}
+
 @media only screen and (max-width: 1024px) {
   .col-categories {
     height: auto !important;
