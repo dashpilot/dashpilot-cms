@@ -414,7 +414,7 @@
         
         <label>Category Slug</label>
         <small>You can not change this afterwards</small>
-        <div class="alert alert-success" id="cat-slug"></div>
+        <div class="alert alert-success" id="cat-slug">category-{cat.id}</div>
         {:else}
         <input type="text" class="form-control" bind:value={cat.title}>
         
