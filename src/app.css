@@ -61,19 +61,6 @@ label {
   margin-bottom: 5px;
 }
 
-.btn.btn-outline-secondary {
-  padding: 1px 11px 5px 11px !important;
-  border: 1px solid #d2d2d2;
-}
-.btn-outline-secondary:hover {
-  background-color: #f8f8f8;
-  color: black;
-}
-.btn.btn-outline-secondary i {
-  margin: 0;
-  font-size: 12px;
-}
-
 .btn.btn-dark {
   color: #fff;
   background-color: #23272b;

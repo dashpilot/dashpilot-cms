@@ -167,7 +167,10 @@ button:hover{
   .btn-group .btn:last-child{
     border-bottom-right-radius: 0;
   }
-  
+  .btn-outline-secondary{
+    padding-top: 4px !important;
+  }
+ 
   
 </style>
 

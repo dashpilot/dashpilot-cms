@@ -70,7 +70,7 @@ const flipDurationMs = 300;
 		}
 		
 		.col-9{
-			padding-top: 4px;
+			padding-top: 6px;
 			padding-left: 20px;
 		}
   </style>
