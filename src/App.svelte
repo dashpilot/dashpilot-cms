@@ -28,6 +28,9 @@
   let cat;
   let postId;
   
+  let latest;
+  let count;
+  
   onMount(async () => {
     
     const res = await fetch(cfg.dataPath);
@@ -40,6 +43,9 @@
       show = 'dashboard'
       tab = 'dashboard'
       showSave = false;
+      
+      latest = latestPost();
+      count = latest.body.split(" ").length;
       
       hydrate()
     });
@@ -115,6 +121,11 @@
     // make sure navigo updates the links on the page after the page has rendered
     await tick();
     router.updatePageLinks()
+  }
+ 
+  function latestPost(){
+    let highest_id = Math.max(...data.posts.map(x => x.id));
+    return data.posts.filter(x=>x.id==highest_id)[0]
   }
 
   function newId(){
@@ -246,7 +257,7 @@
     </div>
     <div class="col-md-4">
       
-      <Card title="Visitors" number="47" msg="&nbsp;in the last 24 hours" icon="fa-tags" icon2="fa-clock" />
+      <Card title="Latest Post" number="{latest.title}" msg="&nbsp; {count} words" icon="fa-clock" icon2="fa-solid fa-calculator" />
     </div>
     <div class="col-md-4">
       <Card title="Version" number="0.4.3" msg="&nbsp;up to date" icon="fa-rocket" icon2="fa-check" />

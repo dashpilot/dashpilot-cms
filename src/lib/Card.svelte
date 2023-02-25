@@ -10,7 +10,7 @@ export let icon2;
    <div class="card card-stats mb-4 mb-xl-0">
 	<div class="card-body">
 	  <div class="row">
-		<div class="col">
+		<div class="col text-truncate">
 		  <h5 class="card-title text-uppercase text-muted mb-0">{title}</h5>
 		  <span class="h2 font-weight-bold mb-0">{number}</span>
 		</div>
