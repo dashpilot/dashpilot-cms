@@ -3,6 +3,9 @@
 	import Gallery from "../widgets/Gallery.svelte"
 	import {slugify} from './Helpers.svelte';
 	
+	import { onMount } from 'svelte';
+	
+	
 	export let postId;
 	export let data; 
 	
@@ -11,19 +14,18 @@
 	let cat;
 	let curType;
 	let curFields;
-	
+
 	index = data.posts.findIndex(x=>x.id==postId);
 	post = data.posts.filter(x=>x.id==postId)[0];
-	
+		
 	cat = data.categories.filter(x=>x.slug==post.category)[0]
 	curType = data.types.filter(x=>x.slug==cat.type)[0];
 	curFields = curType.fields;
-	
 
-	
 	function updateSlug(){
 		data.posts[index].slug = slugify(data.posts[index].title, post.id);
 	}
+	
 </script>
  
 
@@ -63,6 +65,3 @@
   
   
   {/each}
-
- 
- 

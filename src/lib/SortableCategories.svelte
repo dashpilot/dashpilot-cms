@@ -4,7 +4,6 @@ import {flip} from "svelte/animate";
 
 export let items;
 export let data;
-export let cat;
 
 
 const flipDurationMs = 300;
@@ -14,16 +13,15 @@ const flipDurationMs = 300;
   }
   function handleDndFinalize(e) {
 	items = e.detail.items;
-	// get items not in this cat
-	let nothere = data.posts.filter(x => x.category !== cat)
-	data.posts = items.concat(nothere);
+	data.categories = items;
+	console.log(data)
   }
   
-  function deletePost(){
+  function deleteCat(id){
 	  var sure = confirm("Are you sure you wish to delete this item?")
 	  if(sure){
-		  data.posts.splice(curIndex, 1);
-		  curPostId = 0;
+		  let index = data.posts.findIndex(x=>x.id==id);
+		  data.categories.splice(index, 1);
 		  data = data;
 	  }
   }
@@ -35,9 +33,11 @@ const flipDurationMs = 300;
 	<li class="list-group-item item-list" animate:flip="{{duration: flipDurationMs}}">
 		
 	<div class="row">
-		<div class="col-9 text-truncate"><a href="/post/{item.id}" data-navigo>{item.title}</a></div>
+		<div class="col-9 text-truncate"><a href="/category/{item.id}" data-navigo>{item.title}</a></div>
 		<div class="col-3 text-end">
-			<button class="btn btn-outline-secondary btn-delete" on:click={deletePost}><i class="fas fa-trash"></i></button>
+			{#if item.slug!=='home'}
+			<button class="btn btn-outline-secondary btn-delete" on:click={()=>deleteCat(item.id)}><i class="fas fa-trash"></i></button>
+			{/if}
 			
 		</div>
 	</div>	

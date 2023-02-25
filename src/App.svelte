@@ -8,12 +8,13 @@
   import Preview from "./lib/Preview.svelte";
   import Card from "./lib/Card.svelte";
   
-  import SortableList from "./lib/SortableList.svelte";
+  import SortablePosts from "./lib/SortablePosts.svelte";
+  import SortableCategories from "./lib/SortableCategories.svelte";
   import ProfileCard from "./lib/ProfileCard.svelte";
 
   let data;
   let router;
-  let route;
+  let show;
   let tab;
   let notfound;
   
@@ -24,6 +25,7 @@
  
   let posts;
   let catSlug = 'home';
+  let cat;
   let postId;
   
   onMount(async () => {
@@ -35,48 +37,66 @@
     router = new Navigo("/");
     
     router.on("/", async function () {
-      console.log("home")
-      route = '';
+      show = 'dashboard'
       tab = 'dashboard'
       showSave = false;
       
-      update()
+      hydrate()
     });
     
    
-    router.on("/category/:slug", async function (props) {
-      route = 'category';
+    router.on("/posts/:slug", async function (props) {
+      show = 'posts'
       tab = 'posts'
       catSlug = props.data.slug;
       posts = data.posts.filter(x=>x.category==props.data.slug)
       showSave = true;
       
-      update()
+      hydrate()
     });
     
     router.on("/post/:id", async function (props) {    
-      route = 'post';
+      show = 'post'
       tab = 'posts'
       postId = props.data.id;
       showSave = true;
       
-      update()
+      hydrate()
+    });
+    
+      
+    router.on("/categories", async function (props) {    
+      show = 'categories'
+      tab = 'categories'
+      showSave = true;
+      
+      hydrate()
+    });
+    
+    router.on("/category/:id", async function (props) {    
+      show = 'category'
+      tab = 'categories'
+      showSave = true;
+      let catId = props.data.id;
+      cat = data.categories.filter(x=>x.id==catId)[0];
+      
+      hydrate()
     });
     
     router.on("/settings", async function (props) {    
-      route = false;
+      show = 'settings'
       tab = 'settings'
       showSave = true;
       
-      update()
+      hydrate()
     });
     
      
     router.on("/account", async function (props) {    
-      route = false;
+      show = 'account'
       tab = 'account'
       showSave = false;
-      update()
+      hydrate()
     });
    
   
@@ -91,13 +111,12 @@
     }, 50)
   });  
   
-  async function update(){
+  async function hydrate(){
     // make sure navigo updates the links on the page after the page has rendered
     await tick();
     router.updatePageLinks()
   }
 
-  
   function newId(){
     let highest_id = Math.max(...data.posts.map(x => x.id));
     return highest_id+1;
@@ -131,8 +150,31 @@
     data = data;
     
     posts = data.posts.filter(x=>x.category==cat.slug);
+   
+    hydrate()
+    router.navigate('/post/'+id)
+  }
+  
+  async function addCat(){
+
+    let newCat = {}
+    let id = newId();
     
- 
+    newCat.title = "Untitled";
+    newCat.id = id;
+    newCat.type = "post"
+    
+    newCat.slug = slugify(newCat.title, id);
+    data.categories.push(newCat)
+    data = data;
+   
+    hydrate()
+    router.navigate('/category/'+id)
+  }
+  
+  function updateCatSlug(id){
+    let index = data.categories.findIndex(x=>x.id==id)
+    data.categories[index].slug = slugify(data.categories[index].title, id);
   }
   
   function save(){
@@ -157,11 +199,6 @@
     });
   }
   
-  function test(){
-    console.log(data.posts)
-  }
-  
-  
 </script>
 
  {#if showSave}
@@ -177,7 +214,9 @@
       
       <a href="/" class:active={tab === 'dashboard'}  data-navigo><i class="fa-solid fa-gauge"></i> <span class="mob-hide">Dashboard</span></a></li>
 
-    <li><a href="/category/home" class:active={tab === 'posts'}  data-navigo><i class="fa-solid fa-bolt"></i> <span class="mob-hide">Posts</span></a></li>
+    <li><a href="/posts/home" class:active={tab === 'posts'}  data-navigo><i class="fa-solid fa-bolt"></i> <span class="mob-hide">Posts</span></a></li>
+    
+    <li><a href="/categories" class:active={tab === 'categories'}  data-navigo><i class="fa-solid fa-tag"></i> <span class="mob-hide">Categories</span></a></li>
     
     <li><a href="/settings" class:active={tab === 'settings'}  data-navigo><i class="fa-solid fa-gear"></i> <span class="mob-hide">Settings</span></a></li>
     
@@ -192,7 +231,7 @@
 </nav>
 <main class="h-100">
   
-{#if tab=='dashboard'}
+{#if show=='dashboard'}
 <header>
   
   <h5>Dashboard</h5>
@@ -215,48 +254,43 @@
     </div>
   </div>
   
-  
-  
 </div>
 
 {/if}
   
  
     
-    {#if route=='category'}
+    {#if show=='posts'}
 
-    {#if posts}
+    <header>
+     <h5>Posts</h5>
+      </header>
   
     <div class="row g-0 h-100">
     <div class="col-md-3 h-100 col-categories">
-  <header>
- <h5>Posts</h5>
-  </header>
+  
     <ul>
       {#each data.categories as item}
-      <li><a href="/category/{item.slug}" class:active={catSlug === item.slug} data-navigo>{item.title}</a></li>
+      <li><a href="/posts/{item.slug}" class:active={catSlug === item.slug} data-navigo>{item.title}</a></li>
       {/each}
     </ul>
   </div>
     
     <div class="col-md-9 brdr-start col-posts">
-      <header>
-        
-        <button class="btn btn-outline-secondary" on:click={addPost}><i class="fas fa-plus"></i></button>
-        
-      </header>
-      
+   
     <div class="content">
       
-      <SortableList bind:items={posts} bind:data bind:cat={catSlug} />
+      <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
+      
+      <SortablePosts bind:items={posts} bind:data bind:cat={catSlug} />
   
      
     </div>
   </div>
     </div>
-    {/if}
+ {/if}
   
-    {:else if route=='post'}
+    {#if show=='post'}
    <header><h5>Edit Post</h5>
  
 
@@ -267,7 +301,9 @@
       <div class="col-md-6 h-100">
     
         <div class="content no-pad col-editor pb-5">
-        <Editor bind:data bind:postId />
+          
+       
+      <Editor bind:data bind:postId />
         
         </div>
         
@@ -281,7 +317,64 @@
 
     {/if}
     
-    {#if tab=='settings'}
+   
+   
+   {#if show=='categories'}
+  
+ 
+     <header>
+    <h5>Categories</h5>
+     </header>
+       
+  <!--
+         <header>
+           
+           <button class="btn btn-outline-secondary" on:click={addPost}><i class="fas fa-plus"></i></button>
+           
+         </header>
+         -->
+         
+       <div class="content">
+         
+         <button class="btn btn-dark mb-3" on:click={addCat}><i class="fas fa-plus"></i></button>
+         
+         <SortableCategories bind:items={data.categories} bind:data />
+        
+        
+       </div>
+  
+    {/if}
+    
+    
+    {#if show=='category'}
+    
+    
+       <header>
+      <h5>Edit Category</h5>
+       </header>
+       
+       
+       <div class="row g-0 h-fill">
+       <div class="col-md-6 h-100">
+       
+         <div class="content no-pad col-editor">
+       
+       <label>Category title</label>
+        <input type="text" class="form-control" bind:value={cat.title} on:keyup={()=>updateCatSlug(cat.id)}>
+       
+         </div>
+       </div>
+       <div class="col-md-6 h-100 preview-screen">
+       
+       </div>
+       </div>
+  
+    
+      {/if}
+    
+    
+    
+    {#if show=='settings'}
     <header>
       
       <h5>Settings</h5>
@@ -307,7 +400,7 @@
     {/if}
     
     
-    {#if tab=='account'}
+    {#if show=='account'}
     <header>
       <h5>Account</h5>
     </header>
