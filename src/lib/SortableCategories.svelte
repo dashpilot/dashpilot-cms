@@ -41,6 +41,8 @@ const flipDurationMs = 300;
 		<div class="col-3 text-end">
 			{#if item.slug!=='home'}
 			<button class="btn btn-outline-secondary btn-delete" on:click={()=>deleteCat(item.id)}><i class="fas fa-trash"></i></button>
+			{:else}
+			<button class="btn btn-outline-secondary btn-opacity"><i class="fas fa-trash"></i></button>
 			{/if}
 			
 		</div>
@@ -72,5 +74,9 @@ const flipDurationMs = 300;
 		.col-9{
 			padding-top: 6px;
 			padding-left: 20px;
+		}
+		
+		.btn-opacity{
+			opacity: 0;
 		}
   </style>
