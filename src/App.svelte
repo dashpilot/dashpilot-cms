@@ -262,12 +262,15 @@
  
  </header>
       
-      <div class="row g-0 h-100">
+      <div class="row g-0 h-fill">
       <div class="col-md-6 h-100">
     
-        <div class="content no-pad col-editor">
+        <div class="content no-pad col-editor pb-5">
         <Editor bind:data bind:curPostId={curPost} />
+        
         </div>
+        
+       
       </div>
       <div class="col-md-6 h-100 preview-screen">
      
@@ -282,16 +285,23 @@
       
       <h5>Settings</h5>
     </header>
-    <div class="content">
-      
-      <div class="settings-container">
-      {#each Object.keys(data.settings) as key, val}
-      <label>{key.replaceAll('_', ' ')}</label>
-      <input type="text" class="form-control" bind:value={data.settings[key]} />
-      {/each}
+    
+        
+    <div class="row g-0 h-fill">
+    <div class="col-md-6 h-100">
+    
+      <div class="content no-pad col-editor">
+     {#each Object.keys(data.settings) as key, val}
+     <label>{key.replaceAll('_', ' ')}</label>
+     <input type="text" class="form-control" bind:value={data.settings[key]} />
+     {/each}
       </div>
-      
     </div>
+    <div class="col-md-6 h-100 preview-screen">
+    
+    </div>
+    </div>
+
     
     {/if}
     
@@ -444,5 +454,10 @@
     font-size: 80px;
     margin-top: 20px;
   }
+  
+  .h-fill{
+    height: calc(100% - 60px);
+  }
+  
 
 </style>
