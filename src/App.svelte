@@ -33,7 +33,7 @@
   
   onMount(async () => {
     
-    const res = await fetch(cfg.dataPath);
+    const res = await fetch(cfg.dataPath, {cache: "no-store"});
     data = await res.json();
     console.log(data)
     
