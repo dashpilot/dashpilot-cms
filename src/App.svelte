@@ -58,6 +58,11 @@
       posts = data.posts.filter(x=>x.category==props.data.slug)
       showSave = true;
       
+      let catExists = data.categories.filter(x=>x.slug==catSlug)[0];
+      if(!catExists){
+        router.navigate('/posts/home')
+      }
+      
       hydrate()
     });
     
@@ -66,6 +71,11 @@
       tab = 'posts'
       postId = props.data.id;
       showSave = true;
+      
+      let postExists = data.posts.filter(x=>x.id==postId)[0];
+      if(!postExists){
+        router.navigate('/posts/home')
+      }
       
       hydrate()
     });
@@ -85,6 +95,9 @@
       showSave = true;
       let catId = props.data.id;
       cat = data.categories.filter(x=>x.id==catId)[0];
+      if(!cat){
+        router.navigate('/categories')
+      }
       
       hydrate()
     });
