@@ -34,7 +34,12 @@ const flipDurationMs = 300;
 	<li class="list-group-item item-list" animate:flip="{{duration: flipDurationMs}}">
 		
 	<div class="row">
-		<div class="col-9 text-truncate"><a href="/post/{item.id}" data-navigo>{item.title}</a></div>
+		<div class="col-9 text-truncate"><a href="/post/{item.id}" data-navigo>
+			
+			{#if item.title==''}Untitled{:else}{item.title}{/if}
+			
+			
+		</a></div>
 		<div class="col-3 text-end">
 			<button class="btn btn-outline-secondary btn-delete" on:click={deletePost}><i class="fas fa-trash"></i></button>
 			

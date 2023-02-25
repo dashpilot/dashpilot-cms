@@ -130,7 +130,7 @@
     let newPost = {}
     let id = newId();
     
-    newPost.title = "Untitled";
+    newPost.title = "";
     newPost.id = id;
     newPost.category = cat.slug;
     
@@ -142,7 +142,7 @@
       }
     })
     
-    newPost.slug = slugify(newPost.title, id);
+    newPost.slug = slugify("untitled", id);
     
     console.log(newPost)
   
@@ -160,11 +160,11 @@
     let newCat = {}
     let id = newId();
     
-    newCat.title = "Untitled";
+    newCat.title = "";
     newCat.id = id;
     newCat.type = "post"
     
-    newCat.slug = slugify(newCat.title, id);
+    newCat.slug = slugify("untitled", id);
     data.categories.push(newCat)
     data = data;
    
@@ -271,7 +271,7 @@
   
     <ul>
       {#each data.categories as item}
-      <li><a href="/posts/{item.slug}" class:active={catSlug === item.slug} data-navigo>{item.title}</a></li>
+      <li><a href="/posts/{item.slug}" class:active={catSlug === item.slug} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
       {/each}
     </ul>
   </div>
