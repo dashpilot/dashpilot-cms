@@ -22,7 +22,8 @@ const flipDurationMs = 300;
   function deletePost(){
 	  var sure = confirm("Are you sure you wish to delete this item?")
 	  if(sure){
-		  data.posts.splice(curIndex, 1);
+		  let index = data.posts.findIndex(x=>x.id==id);
+		  data.posts.splice(index, 1);
 		  data = data;
 	  }
   }

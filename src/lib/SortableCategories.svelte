@@ -20,7 +20,7 @@ const flipDurationMs = 300;
   function deleteCat(id){
 	  var sure = confirm("Are you sure you wish to delete this item?")
 	  if(sure){
-		  let index = data.posts.findIndex(x=>x.id==id);
+		  let index = data.categories.findIndex(x=>x.id==id);
 		  data.categories.splice(index, 1);
 		  data = data;
 	  }
