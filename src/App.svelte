@@ -9,6 +9,7 @@
   import Card from "./lib/Card.svelte";
   
   import SortableList from "./lib/SortableList.svelte";
+  import ProfileCard from "./lib/ProfileCard.svelte";
 
   let data;
   let router;
@@ -274,7 +275,7 @@
       </div>
       <div class="col-md-6 h-100 preview-screen">
      
-       <!-- <Preview bind:data bind:curPost={curPost} />-->
+       <Preview bind:data bind:postId />
       </div>
       </div>
 
@@ -298,7 +299,7 @@
       </div>
     </div>
     <div class="col-md-6 h-100 preview-screen">
-    
+   
     </div>
     </div>
 
@@ -308,25 +309,11 @@
     
     {#if tab=='account'}
     <header>
-      
       <h5>Account</h5>
     </header>
     <div class="content">
       
-     
-     
-     <div class="card m-auto" style="width: 18rem;">
-       
-       <div class="profile-pic">
-         <i class="fa-solid fa-user-astronaut"></i>
-       </div>
-      
-       <div class="card-body text-center">
-         <h5 class="card-title text-capitalize">{cfg.site}</h5>
-         <p class="card-text"><a href="{cfg.live_url}" target="_blank">{cfg.live_url}</a></p>
-         <a href="/api/logout" class="btn btn-dark">Sign Out</a>
-       </div>
-     </div>
+     <ProfileCard />
       
     </div>
     
@@ -427,34 +414,7 @@
   .brdr-start{
     border-left: 1px solid #d2d2d2;
   }
-  
-  .settings-container{
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 5px 20px 25px 20px;
-    border: 1px solid #d2d2d2;
-    background-color: white;
-    border-radius: 8px;
-    margin-top: 0px;
-  }
-  
-  .profile-pic{
-    text-align: center;
-    overflow: hidden;
-    width: 100px;
-    height: 100px;
-    border: 1px solid #d2d2d2;
-    border-radius: 50%;
-    margin: 0 auto;
-    margin-top: -50px;
-    background-color: white;
-  }
-  
-  .profile-pic i{
-    font-size: 80px;
-    margin-top: 20px;
-  }
-  
+
   .h-fill{
     height: calc(100% - 60px);
   }

@@ -1,9 +1,11 @@
 <script>
 	export let data;
-	export let curPost;
-	console.log(curPost)
-	let item = data.posts.filter(x=>x.id==curPost)[0];
-	let index = data.posts.findIndex(x=>x.id==curPost);
+	export let postId;
+	
+
+	let item = data.posts.filter(x=>x.id==postId)[0];
+	let index = data.posts.findIndex(x=>x.id==postId);
+	
 </script>
 
 <div class="preview">
