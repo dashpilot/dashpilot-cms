@@ -22,8 +22,8 @@
   let saved;
  
   let posts;
-  let curCat = 'home';
-  let curPost;
+  let catSlug = 'home';
+  let postId;
   
   onMount(async () => {
     
@@ -46,17 +46,17 @@
     router.on("/category/:slug", async function (props) {
       route = 'category';
       tab = 'posts'
-      curCat = props.data.slug;
+      catSlug = props.data.slug;
       posts = data.posts.filter(x=>x.category==props.data.slug)
       showSave = true;
       
       update()
     });
     
-    router.on("/post/:slug", async function (props) {    
+    router.on("/post/:id", async function (props) {    
       route = 'post';
       tab = 'posts'
-      curPost = props.data.slug;
+      postId = props.data.id;
       showSave = true;
       
       update()
@@ -104,7 +104,7 @@
   
   async function addPost(){
     
-    let cat = data.categories.filter(x=>x.slug==curCat)[0];
+    let cat = data.categories.filter(x=>x.slug==catSlug)[0];
     let curType = data.types.filter(x=>x.slug==cat.type)[0];
   
     let newPost = {}
@@ -233,7 +233,7 @@
   </header>
     <ul>
       {#each data.categories as item}
-      <li><a href="/category/{item.slug}" class:active={curCat === item.slug} data-navigo>{item.title}</a></li>
+      <li><a href="/category/{item.slug}" class:active={catSlug === item.slug} data-navigo>{item.title}</a></li>
       {/each}
     </ul>
   </div>
@@ -247,7 +247,7 @@
       
     <div class="content">
       
-      <SortableList bind:items={posts} bind:data bind:cat={curCat} />
+      <SortableList bind:items={posts} bind:data bind:cat={catSlug} />
   
      
     </div>
@@ -266,7 +266,7 @@
       <div class="col-md-6 h-100">
     
         <div class="content no-pad col-editor pb-5">
-        <Editor bind:data bind:curPostId={curPost} />
+        <Editor bind:data bind:postId />
         
         </div>
         
@@ -274,7 +274,7 @@
       </div>
       <div class="col-md-6 h-100 preview-screen">
      
-        <Preview bind:data bind:curPost={curPost} />
+       <!-- <Preview bind:data bind:curPost={curPost} />-->
       </div>
       </div>
 
