@@ -217,12 +217,18 @@
   function updateCatSlug(id){
 
     let index = data.categories.findIndex(x=>x.id==id)
-    let slug = slugify(data.categories[index].title, false);
-    console.log(slug)
-    data.categories[index].slug = slug;
-    document.getElementById('cat-slug').innerText = slug;
+    var slug = slugify(data.categories[index].title, false);
     
-  
+    var exists = data.categories.filter(x=>x.slug==slug)[0]
+    if(exists){
+      console.log('exists')
+      slug = slugify(data.categories[index].title, id)
+    }
+   
+    data.categories[index].slug = slug;
+    data.categories = data.categories;
+    // document.getElementById('cat-slug').innerText = slug;
+    
   }
   
   function save(){
@@ -451,12 +457,17 @@
        {#if action=='add'}
         <input type="text" class="form-control" bind:value={cat.title} on:keyup={()=>updateCatSlug(cat.id)}>
         
+        <!--
         <label>Category Slug</label>
-        <small>You can not change this afterwards</small>
-        <div class="alert alert-success" id="cat-slug">category-{cat.id}</div>
+        <div class="alert alert-success" id="cat-slug"></div>
+      -->
         {:else}
-        <input type="text" class="form-control" bind:value={cat.title}>
+        <input type="text" class="form-control" bind:value={cat.title} on:keyup={()=>updateCatSlug(cat.id)}>
         
+        <!--
+        <label>Category Slug</label>
+        <div class="alert alert-success" id="cat-slug"></div>
+        -->
         
         {/if}
         
