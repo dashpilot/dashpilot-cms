@@ -315,26 +315,56 @@
       </header>
   
     <div class="row g-0 h-100">
-    <div class="col-md-3 h-100 col-categories">
   
-    <ul>
-      {#each data.categories as item}
-      <li><a href="/posts/{item.slug}" class:active={catSlug === item.slug} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
-      {/each}
-    </ul>
-  </div>
-    
-    <div class="col-md-9 brdr-start col-posts">
+    <div class="col-md-9 col-posts">
    
     <div class="content">
       
-      <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
+      
+      <div class="row">
+        <div class="col-8">
+          
+          <div class="dropdown">
+            <button
+              class="btn btn-dark dropdown-toggle  text-capitalize"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+             Category: {catSlug}
+            </button>
+            <ul class="dropdown-menu">
+              
+              {#each data.categories as item}
+              <li><a href="/posts/{item.slug}" class="dropdown-item" class:active={catSlug === item.slug} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
+              {/each}
+            
+            
+            </ul>
+          </div>
+          
+        </div>
+        <div class="col-4 text-end">
+          <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
+        </div>
+      </div>
+   
+      
+      
+  
+      
+      
       
       <SortablePosts bind:items={posts} bind:data bind:cat={catSlug} />
   
      
     </div>
   </div>
+  
+  <div class="col-md-3 h-100 col-categories brdr-start">
+
+  </div>
+    
     </div>
  {/if}
   
@@ -346,7 +376,7 @@
  </header>
       
       <div class="row g-0 h-fill">
-      <div class="col-md-8 h-100">
+      <div class="col-md-9 h-100">
     
         <div class="content no-pad col-editor pb-5">
           
@@ -357,7 +387,7 @@
         
        
       </div>
-      <div class="col-md-4 h-100 preview-screen">
+      <div class="col-md-3 h-100 preview-screen">
      
        <!-- <Preview bind:data bind:postId />-->
       </div>
@@ -373,23 +403,28 @@
      <header>
     <h5>Categories</h5>
      </header>
-       
-  <!--
-         <header>
-           
-           <button class="btn btn-outline-secondary" on:click={addPost}><i class="fas fa-plus"></i></button>
-           
-         </header>
-         -->
-         
+
+
+    <div class="row g-0 h-fill">
+      <div class="col-md-9 h-100">
        <div class="content">
-         
-         <button class="btn btn-dark mb-3" on:click={addCat}><i class="fas fa-plus"></i></button>
+         <div class="row">
+           <div class="col-8"></div>
+           <div class="col-4 text-end"><button class="btn btn-dark mb-3 ms-auto" on:click={addCat}><i class="fas fa-plus"></i></button></div>
+                     
+         </div>
+       
          
          <SortableCategories bind:data />
         
-        
        </div>
+      </div>
+      
+      <div class="col-md-3 h-100 preview-screen">
+       
+       </div>
+       </div>
+      
   
     {/if}
     
@@ -403,7 +438,7 @@
        
        
        <div class="row g-0 h-fill">
-       <div class="col-md-6 h-100">
+       <div class="col-md-9 h-100">
        
          <div class="content no-pad col-editor">
        
@@ -425,7 +460,7 @@
        
          </div>
        </div>
-       <div class="col-md-6 h-100 preview-screen">
+       <div class="col-md-3 h-100 preview-screen">
        
        </div>
        </div>
@@ -443,7 +478,7 @@
     
         
     <div class="row g-0 h-fill">
-    <div class="col-md-6 h-100">
+    <div class="col-md-9 h-100">
     
       <div class="content no-pad col-editor">
      {#each Object.keys(data.settings) as key, val}
@@ -452,7 +487,7 @@
      {/each}
       </div>
     </div>
-    <div class="col-md-6 h-100 preview-screen">
+    <div class="col-md-3 h-100 preview-screen">
    
     </div>
     </div>
@@ -485,12 +520,12 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 180px;
+    width: 250px;
     background-color: #333333;
   }
   
   main{
-    padding-left: 180px;
+    padding-left: 250px;
   }
   
   header{
