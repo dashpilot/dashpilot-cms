@@ -7,6 +7,7 @@
   import Editor from "./lib/Editor.svelte";
   import Preview from "./lib/Preview.svelte";
   import Card from "./lib/Card.svelte";
+  import Publish from "./lib/Publish.svelte";
   
   import SortablePosts from "./lib/SortablePosts.svelte";
   import SortableCategories from "./lib/SortableCategories.svelte";
@@ -31,6 +32,8 @@
   
   let latest;
   let count;
+  
+  let showPublish;
   
   onMount(async () => {
     
@@ -261,6 +264,8 @@
 
  {#if showSave}
  <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+ 
+ <button class="btn btn-dark btn-publish" on:click="{()=>showPublish=true}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
  {/if}
 
 <nav>
@@ -527,6 +532,9 @@
 
 </main>
 
+{#if showPublish}
+<Publish bind:showPublish />
+{/if}
 
 <style>
  
