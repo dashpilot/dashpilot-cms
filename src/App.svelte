@@ -24,7 +24,7 @@
   let saved;
  
   let posts;
-  let catSlug = 'home';
+  let catId = 1;
   let cat;
   let postId;
   let action = 'edit';
@@ -52,16 +52,16 @@
     });
     
    
-    router.on("/posts/:slug", async function (props) {
+    router.on("/posts/:catid", async function (props) {
       show = 'posts'
       tab = 'posts'
-      catSlug = props.data.slug;
-      posts = data.posts.filter(x=>x.category==props.data.slug)
+      catId = props.data.catid;
+      posts = data.posts.filter(x=>x.category==catId)
       showSave = true;
       
-      let catExists = data.categories.filter(x=>x.slug==catSlug)[0];
+      let catExists = data.categories.filter(x=>x.id==catId)[0];
       if(!catExists){
-        router.navigate('/posts/home')
+        router.navigate('/posts/1')
       }
       
       hydrate()
@@ -162,7 +162,7 @@
     
  
     
-    let cat = data.categories.filter(x=>x.slug==catSlug)[0];
+    let cat = data.categories.filter(x=>x.id==catId)[0];
     let curType = data.types.filter(x=>x.slug==cat.type)[0];
   
     let newPost = {}
@@ -335,12 +335,12 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-             Category: {catSlug}
+             Category: {data.categories.filter(x=>x.id==catId)[0].title}
             </button>
             <ul class="dropdown-menu" id="cat-dropdown">
               
               {#each data.categories as item}
-              <li><a href="/posts/{item.slug}" on:click={closeDropDown} class="dropdown-item" class:active={catSlug === item.slug} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
+              <li><a href="/posts/{item.id}" on:click={closeDropDown} class="dropdown-item" class:active={catId === item.id} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
               {/each}
             
             
@@ -359,7 +359,7 @@
       
       
       
-      <SortablePosts bind:items={posts} bind:data bind:cat={catSlug} />
+      <SortablePosts bind:items={posts} bind:data bind:catId />
   
      
     </div>

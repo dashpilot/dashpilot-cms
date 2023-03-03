@@ -4,7 +4,7 @@ import {flip} from "svelte/animate";
 
 export let items;
 export let data;
-export let cat;
+export let catId;
 
 
 const flipDurationMs = 300;
@@ -15,7 +15,7 @@ const flipDurationMs = 300;
   function handleDndFinalize(e) {
 	items = e.detail.items;
 	// get items not in this cat
-	let nothere = data.posts.filter(x => x.category !== cat)
+	let nothere = data.posts.filter(x => x.category !== catId)
 	data.posts = items.concat(nothere);
   }
   
@@ -26,7 +26,7 @@ const flipDurationMs = 300;
 		  console.log(index)
 		  data.posts.splice(index, 1);
 		  data = data;
-		  items = data.posts.filter(x=>x.category==cat)
+		  items = data.posts.filter(x=>x.category==catId)
 	  }
   }
 </script>
