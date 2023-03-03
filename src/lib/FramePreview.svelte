@@ -12,8 +12,11 @@ function preview(){
   
   //message sender
   var message = JSON.stringify(data);
-  iframe.postMessage(message,domain)
-  console.log('message sent')
+  setTimeout(()=>{
+	iframe.postMessage(message,domain)
+	console.log('message sent')
+  }, 1000)
+
 }
 
 </script>
