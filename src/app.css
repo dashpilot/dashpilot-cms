@@ -71,13 +71,19 @@ label {
 .btn-save {
   position: absolute;
   top: 9px;
-  right: 145px;
+  right: 147px;
 }
 
 .btn-publish {
   position: absolute;
   top: 9px;
-  right: 15px;
+  right: 17px;
+}
+
+.btn-preview {
+  position: absolute;
+  top: 9px;
+  right: 255px;
 }
 
 a .fa-solid {
@@ -88,6 +94,15 @@ small {
   display: block;
   margin-bottom: 10px;
   color: #777;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 @media only screen and (max-width: 1024px) {

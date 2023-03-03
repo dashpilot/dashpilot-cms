@@ -8,6 +8,7 @@
   import Preview from "./lib/Preview.svelte";
   import Card from "./lib/Card.svelte";
   import Publish from "./lib/Publish.svelte";
+  import FramePreview from "./lib/FramePreview.svelte";
   
   import SortablePosts from "./lib/SortablePosts.svelte";
   import SortableCategories from "./lib/SortableCategories.svelte";
@@ -34,6 +35,7 @@
   let count;
   
   let showPublish;
+  let showPreview;
   
   onMount(async () => {
     
@@ -263,6 +265,9 @@
 </script>
 
  {#if showSave}
+ 
+
+ 
  <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
  
  <button class="btn btn-dark btn-publish" on:click="{()=>showPublish=true}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
@@ -386,7 +391,7 @@
     {#if show=='post'}
    <header><h5>Edit Post</h5>
  
-
+ <button class="btn btn-dark btn-preview" on:click="{()=>showPreview=true}"><i class="fas fa-rocket"></i> &nbsp;Preview</button>
  
  </header>
       
@@ -403,6 +408,10 @@
        
       </div>
       <div class="col-md-3 h-100 preview-screen">
+        
+        {#if showPreview}
+        <FramePreview bind:showPreview bind:data bind:postId  />
+        {/if}
      
        <!-- <Preview bind:data bind:postId />-->
       </div>
@@ -535,6 +544,8 @@
 {#if showPublish}
 <Publish bind:showPublish />
 {/if}
+
+
 
 <style>
  
