@@ -7,7 +7,7 @@ let post = data.posts.filter(x=>x.id=postId)[0]
 let slug = post.slug;
 
 function preview(){
-  var domain = cfg.live_url;
+  var domain = cfg.live_url+"/article/"+post.id;
   var iframe = document.getElementById('preview-frame').contentWindow;
   
   //message sender
