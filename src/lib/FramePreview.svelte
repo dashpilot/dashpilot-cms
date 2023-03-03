@@ -15,7 +15,7 @@ function preview(){
   setTimeout(()=>{
 	iframe.postMessage(message,domain)
 	console.log('message sent')
-  }, 1000)
+  }, 10)
 
 }
 
