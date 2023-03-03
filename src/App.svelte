@@ -247,6 +247,10 @@
     });
   }
   
+  function closeDropDown(){
+    document.querySelector('#cat-dropdown').classList.remove('show');
+  }
+  
 </script>
 
  {#if showSave}
@@ -326,17 +330,17 @@
           
           <div class="dropdown">
             <button
-              class="btn btn-dark dropdown-toggle  text-capitalize"
+              class="btn btn-dark dropdown-toggle text-capitalize"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
              Category: {catSlug}
             </button>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu" id="cat-dropdown">
               
               {#each data.categories as item}
-              <li><a href="/posts/{item.slug}" class="dropdown-item" class:active={catSlug === item.slug} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
+              <li><a href="/posts/{item.slug}" on:click={closeDropDown} class="dropdown-item" class:active={catSlug === item.slug} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
               {/each}
             
             
