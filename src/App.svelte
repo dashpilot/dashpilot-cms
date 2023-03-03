@@ -457,12 +457,12 @@
        {#if action=='add'}
         <input type="text" class="form-control" bind:value={cat.title} on:keyup={()=>updateCatSlug(cat.id)}>
         
-        <!--
+      
         <label>Category Slug</label>
         <div class="alert alert-success" id="cat-slug"></div>
-      -->
+  
         {:else}
-        <input type="text" class="form-control" bind:value={cat.title} on:keyup={()=>updateCatSlug(cat.id)}>
+        <input type="text" class="form-control" bind:value={cat.title}>
         
         <!--
         <label>Category Slug</label>
