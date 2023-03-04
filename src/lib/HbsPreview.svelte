@@ -3,6 +3,7 @@
 <script>
 import { onMount } from 'svelte';
 
+
 export let showPreview;
 export let data;
 export let postId;
@@ -50,7 +51,7 @@ function previewPost(){
 		 
 	
 	
-		<iframe src="{remote_preview}" width="798" height="600" id="preview-frame" on:load={previewPost}></iframe>
+		<iframe src="{remote_preview}" width="798" height="600" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
 
 	  </div>
 	 
@@ -63,8 +64,16 @@ function previewPost(){
 
 	
 	.modal-body{
-		min-height: 500px;
+		min-height: 600px;
 	
+	}
+	
+	
+	.fade-in { animation: fadeIn 2s; }
+	
+	@keyframes fadeIn {
+	  0% { opacity: 0; }
+	  100% { opacity: 1; }
 	}
 </style>
 
