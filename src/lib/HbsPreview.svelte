@@ -12,21 +12,26 @@ let post = data.posts.filter(x=>x.id=postId)[0]
 let slug = post.slug;
 
 let preview;
+let remote_preview = cfg.live_url+"/preview";
 
-/*
-function preview(){
-  var domain = cfg.live_url;
-  var iframe = document.getElementById('preview-frame').contentWindow;
-  
-  //message sender
-  var message = JSON.stringify(data);
- 
-	iframe.postMessage(message,domain)
-	console.log('message sent')
+
+function previewPost(){
+	
+	setTimeout(()=>{
+		var domain = cfg.live_url+"/preview";
+		var iframe = document.getElementById('preview-frame').contentWindow;
+		  
+		  //message sender
+		  var message = JSON.stringify(post);
+		 
+			iframe.postMessage(message,domain)
+			console.log('message sent')
+	}, 50)
+
 
 
 }
-*/
+
 
 
 </script>
@@ -45,7 +50,7 @@ function preview(){
 		 
 	
 	
-		<iframe src="/preview/{post.id}" width="798" height="600" id="preview-frame" on:load={preview}></iframe>
+		<iframe src="{remote_preview}" width="798" height="600" id="preview-frame" on:load={previewPost}></iframe>
 
 	  </div>
 	 

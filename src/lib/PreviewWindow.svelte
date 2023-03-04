@@ -8,28 +8,46 @@ import { onMount } from 'svelte';
 export let data;
 export let postId;
 
-let post = data.posts.filter(x=>x.id=postId)[0]
-let preview;
+let post;
+let preview = false;
 	
 	
 onMount(async () => {
 	
-var template = Handlebars.compile(`
-	<h2>{{title}}</h2>
-	
-	{{{body}}}
-	
-`);
-// execute the compiled template and print the output to the console
-preview = template(post);
+		window.addEventListener(
+			"message",
+			function (e) {
+			  // var origin = e.originalEvent.origin || e.origin;
+			  // if (origin !== "https://dashpilot.cyclic.app") return;
+			  
+			  console.log("received message");
+			
+			  post = JSON.parse(e.data)
+			  
+			  var template = Handlebars.compile(`
+				  <h2>{{title}}</h2>
+				  
+				  {{{body}}}
+				  
+			  `);
+			  // execute the compiled template and print the output to the console
+			  preview = template(post);
+			 
+			},
+			false
+		  );
 
 });	
 </script>
-
 <div class="preview">
-{@html preview}
-</div>
+{#if preview}
 
+{@html preview}
+
+{:else}
+Loading...
+{/if}
+</div>
 <style>
 	
 	.preview{
