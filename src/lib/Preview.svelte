@@ -1,4 +1,5 @@
 <script>
+import { fade, fly } from 'svelte/transition';
 import { onMount } from 'svelte';
 
 export let showPreview;
@@ -29,7 +30,7 @@ function previewPost(){
 </script>
 
 
-<div class="backdrop">
+<div class="backdrop" transition:fade={{duration: 1000}}>
 <div class="modal modal-lg" tabindex="-1" style="display: block;">
   <div class="modal-dialog">
 	<div class="modal-content">

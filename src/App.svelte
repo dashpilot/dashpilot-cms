@@ -264,6 +264,11 @@
     });
   }
   
+  function publish(){
+    save();
+    showPublish=true;
+  }
+  
   function closeDropDown(){
     document.querySelector('#cat-dropdown').classList.remove('show');
   }
@@ -273,14 +278,15 @@
  {#if showSave}
  
 
- 
+
  <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+
+ <button class="btn btn-dark btn-publish" on:click="{publish}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
+
  
- <button class="btn btn-dark btn-publish" on:click="{()=>showPublish=true}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
  {/if}
  
- 
- {#if show!=='preview'}
+
 
 <nav>
   <header></header>
@@ -394,12 +400,12 @@
     {#if show=='post'}
    <header><h5>Edit Post</h5>
  
- <button class="btn btn-dark btn-preview" on:click="{()=>showPreview=true}"><i class="fas fa-rocket"></i> &nbsp;Preview</button>
+ <button class="btn btn-dark btn-preview" on:click="{()=>showPreview=true}"><i class="fas fa-binoculars"></i> &nbsp;Preview</button>
  
  </header>
       
       <div class="row g-0 h-fill">
-      <div class="col-md-9 h-100">
+      <div class="col-md-8 h-100">
     
         <div class="content no-pad col-editor pb-5">
           
@@ -410,7 +416,7 @@
         
        
       </div>
-      <div class="col-md-3 h-100 preview-screen">
+      <div class="col-md-4 h-100 preview-screen">
         
         {#if showPreview}
         <Preview bind:showPreview bind:data bind:postId />
@@ -552,10 +558,6 @@
 <Publish bind:showPublish />
 {/if}
 
-{:else}
-
-<PreviewWindow bind:data bind:postId />
-{/if}
 
 <style>
  

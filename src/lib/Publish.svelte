@@ -59,56 +59,60 @@ function publish(){
 }
 
 function close(){
-  showPublish = false;
-  preview = false;
+preview = false;
+showPublish = false;
 }
+
 </script>
 
 {#if showPublish}
+
 <div class="backdrop" transition:fade={{duration: 200}}>
-<div id="publisher" class="wdgt">
+<div class="modal mt-5" tabindex="-1" style="display: block;">
+  <div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+    <h5 class="modal-title">Publish</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" on:click={()=>showPublish=false}></button>
+    </div>
+    <div class="modal-body">
+  
+Publish your site to:
+{cfg.live_url}
 
-<div class="wdgt-content">
-
- <div class="modal-header">
-  <h5 class="modal-title">Publish</h5>
-  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" on:click={close}></button>
-</div>
-
-</div>
-
-<div class="wdgt-footer">
-
-
-{#if checked}
-
-  {#if preview}
-  <a href="{liveUrl}" target="blank" class="btn btn-primary float-right">View Site</a>
-  {:else}
-
-    <button class="btn btn-primary float-right" on:click="{publish}">
-    {#if loading}
-    <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> Publishing...
-    {:else}
-    Publish
-    {/if}
-    </button>
-
-  {/if}
-
-{:else}
-
-  {#if error}
-  Please <a href="/upgrade">upgrade</a> to publish your site.
-  {:else}
-  <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> Checking status...
-  {/if}
-
-{/if}
-
-<div class="clear"></div>
-</div>
-
+    </div>
+    <div class="modal-footer">
+      
+      {#if checked}
+      
+        {#if preview}
+        <a href="{liveUrl}" target="blank" class="btn btn-primary float-right">View Site</a>
+        {:else}
+      
+          <button class="btn btn-primary float-right" on:click="{publish}">
+          {#if loading}
+          <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> Publishing...
+          {:else}
+          Publish
+          {/if}
+          </button>
+      
+        {/if}
+      
+      {:else}
+      
+        {#if error}
+        Please <a href="/upgrade">upgrade</a> to publish your site.
+        {:else}
+        <span class="spinner-border spinner-border-sm mr-1" role="status" aria-hidden="true"></span> Checking status...
+        {/if}
+      
+      {/if}
+      
+    </div>
+   
+  </div>
+  </div>
 </div>
 </div>
 
