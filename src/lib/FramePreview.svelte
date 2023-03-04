@@ -31,7 +31,7 @@ function preview(){
 		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" on:click={()=>showPreview=false}></button>
 	  </div>
 	  <div class="modal-body p-0">
-		<iframe src="{cfg.live_url}/article/{post.id}" width="798" height="600" id="preview-frame" on:load={preview}></iframe>
+		<iframe src="{cfg.live_url}" width="798" height="600" id="preview-frame" on:load={preview}></iframe>
 	  </div>
 	 
 	</div>
