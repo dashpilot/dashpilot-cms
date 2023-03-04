@@ -8,6 +8,7 @@
 	
  
 	function onChange() {
+		console.log('changed')
 		//`items` are mutated
 		console.log(items)
 		let nothere = data.posts.filter(x => x.category !== catId)

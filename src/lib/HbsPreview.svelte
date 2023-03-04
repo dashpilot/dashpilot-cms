@@ -5,8 +5,8 @@ export let showPreview;
 export let data;
 export let postId;
 
-let post = data.posts.filter(x=>x.id=postId)[0]
-let slug = post.slug;
+
+let post = data.posts.filter(x=>x.id==postId)[0]
 
 let preview;
 let remote_preview = cfg.live_url+"/preview";
@@ -26,6 +26,7 @@ function previewPost(){
 	}, 50)
 
 }
+
 </script>
 
 
@@ -34,12 +35,14 @@ function previewPost(){
   <div class="modal-dialog">
 	<div class="modal-content">
 	  <div class="modal-header">
-		<h5 class="modal-title">Preview</h5>
+		<h5 class="modal-title">Preview <b>{postId}</b></h5>
 		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" on:click={()=>showPreview=false}></button>
 	  </div>
 	  <div class="modal-body p-0">
 	
+
 		<iframe src="{remote_preview}" width="798" height="600" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
+
 
 	  </div>
 	 
