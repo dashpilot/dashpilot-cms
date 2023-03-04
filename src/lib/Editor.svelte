@@ -3,8 +3,6 @@
 	import Gallery from "../widgets/Gallery.svelte"
 	import {slugify} from './Helpers.svelte';
 	
-	import { onMount } from 'svelte';
-	
 	
 	export let postId;
 	export let data; 

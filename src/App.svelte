@@ -1,3 +1,6 @@
+<svelte:head>
+ <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+</svelte:head>
 <script>
   import { onMount } from 'svelte';
   import { tick } from 'svelte';
@@ -5,10 +8,11 @@
  
   import {slugify} from "./lib/Helpers.svelte";
   import Editor from "./lib/Editor.svelte";
-  import Preview from "./lib/Preview.svelte";
+  // import Preview from "./lib/Preview.svelte";
   import Card from "./lib/Card.svelte";
   import Publish from "./lib/Publish.svelte";
-  import FramePreview from "./lib/FramePreview.svelte";
+  import FramePreview from "./lib/HbsPreview.svelte";
+  import PreviewWindow from "./lib/PreviewWindow.svelte";
   
   import SortablePosts from "./lib/SortablePosts.svelte";
   import SortableCategories from "./lib/SortableCategories.svelte";
@@ -127,6 +131,14 @@
       showSave = false;
       hydrate()
     });
+    
+    router.on("/preview/:id", async function (props) {    
+      show = 'preview'
+      tab = 'posts'
+      postId = props.data.id;
+    
+      hydrate()
+    });
    
   
     router.notFound(() => {
@@ -175,7 +187,7 @@
     
     newPost.title = "";
     newPost.id = id;
-    newPost.category = cat.slug;
+    newPost.category = cat.id;
     
     curType.fields.forEach(item=>{
       if(item.type=='gal'){
@@ -272,6 +284,9 @@
  
  <button class="btn btn-dark btn-publish" on:click="{()=>showPublish=true}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
  {/if}
+ 
+ 
+ {#if show!=='preview'}
 
 <nav>
   <header></header>
@@ -537,6 +552,10 @@
     
     {/if}
     
+    
+       
+   
+    
 
 
 </main>
@@ -545,7 +564,10 @@
 <Publish bind:showPublish />
 {/if}
 
+{:else}
 
+<PreviewWindow bind:data bind:postId />
+{/if}
 
 <style>
  

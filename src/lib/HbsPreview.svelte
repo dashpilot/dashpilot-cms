@@ -1,11 +1,19 @@
+
+
 <script>
+import { onMount } from 'svelte';
+
 export let showPreview;
 export let data;
 export let postId;
 
+
 let post = data.posts.filter(x=>x.id=postId)[0]
 let slug = post.slug;
 
+let preview;
+
+/*
 function preview(){
   var domain = cfg.live_url;
   var iframe = document.getElementById('preview-frame').contentWindow;
@@ -18,6 +26,8 @@ function preview(){
 
 
 }
+*/
+
 
 </script>
 
@@ -32,13 +42,25 @@ function preview(){
 	  </div>
 	  <div class="modal-body p-0">
 		  
-		  
-		<iframe src="{cfg.live_url}/article/{post.id}" width="798" height="600" id="preview-frame" on:load={preview}></iframe>
+		 
+	
+	
+		<iframe src="/preview/{post.id}" width="798" height="600" id="preview-frame" on:load={preview}></iframe>
+
 	  </div>
 	 
 	</div>
   </div>
 </div>
 </div>
+
+<style>
+
+	
+	.modal-body{
+		min-height: 500px;
+	
+	}
+</style>
 
 
