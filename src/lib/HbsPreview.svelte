@@ -1,13 +1,9 @@
-
-
 <script>
 import { onMount } from 'svelte';
-
 
 export let showPreview;
 export let data;
 export let postId;
-
 
 let post = data.posts.filter(x=>x.id=postId)[0]
 let slug = post.slug;
@@ -15,12 +11,12 @@ let slug = post.slug;
 let preview;
 let remote_preview = cfg.live_url+"/preview";
 
-
 function previewPost(){
 	
 	setTimeout(()=>{
 		var domain = cfg.live_url+"/preview";
 		var iframe = document.getElementById('preview-frame').contentWindow;
+	
 		  
 		  //message sender
 		  var message = JSON.stringify(post);
@@ -29,12 +25,7 @@ function previewPost(){
 			console.log('message sent')
 	}, 50)
 
-
-
 }
-
-
-
 </script>
 
 
@@ -47,9 +38,6 @@ function previewPost(){
 		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" on:click={()=>showPreview=false}></button>
 	  </div>
 	  <div class="modal-body p-0">
-		  
-		 
-	
 	
 		<iframe src="{remote_preview}" width="798" height="600" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
 

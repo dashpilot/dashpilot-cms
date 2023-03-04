@@ -10,6 +10,7 @@ let options = {handle: '.handle'}
 
 function onChange() {
 	data.categories = items;
+	items = items;
 }
 
 
