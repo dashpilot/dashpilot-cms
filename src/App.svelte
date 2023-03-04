@@ -384,15 +384,9 @@
         </div>
       </div>
    
-      
-      
   
-      
-      
-      
       <SortablePosts bind:items={posts} bind:data bind:catId />
-  
-     
+    
     </div>
   </div>
   
