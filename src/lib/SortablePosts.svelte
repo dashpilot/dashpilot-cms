@@ -10,8 +10,8 @@
 	function onChange() {
 		//`items` are mutated
 		console.log(items)
-	    
-		
+		let nothere = data.posts.filter(x => x.category !== catId)
+		data.posts = items.concat(nothere);
 	}
 	
 	function deletePost(id){
