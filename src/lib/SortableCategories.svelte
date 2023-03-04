@@ -89,6 +89,11 @@ function onChange() {
 			  color: black;
 		  }
 		  
+		  .col-9 a:hover{
+			color: black;
+			text-decoration: underline;
+		  }
+		  
 		  .list-group-item{
 			  padding: 15px;
 			  padding-left: 20px;

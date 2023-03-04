@@ -11,8 +11,8 @@
   // import Preview from "./lib/Preview.svelte";
   import Card from "./lib/Card.svelte";
   import Publish from "./lib/Publish.svelte";
-  import FramePreview from "./lib/HbsPreview.svelte";
-  import PreviewWindow from "./lib/PreviewWindow.svelte";
+  import Preview from "./lib/Preview.svelte";
+
   
   import SortablePosts from "./lib/SortablePosts.svelte";
   import SortableCategories from "./lib/SortableCategories.svelte";
@@ -413,7 +413,7 @@
       <div class="col-md-3 h-100 preview-screen">
         
         {#if showPreview}
-        <FramePreview bind:showPreview bind:data bind:postId />
+        <Preview bind:showPreview bind:data bind:postId />
         {/if}
      
        <!-- <Preview bind:data bind:postId />-->
