@@ -30,7 +30,7 @@ function previewPost(){
 </script>
 
 
-<div class="backdrop" transition:fade={{duration: 1000}}>
+<div class="backdrop" in:fade={{duration: 700}} out:fade={{duration: 200}}>
 <div class="modal modal-lg" tabindex="-1" style="display: block;">
   <div class="modal-dialog">
 	<div class="modal-content">

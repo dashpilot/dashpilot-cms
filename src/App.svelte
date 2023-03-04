@@ -351,7 +351,7 @@
   
     <div class="row g-0 h-100">
   
-    <div class="col-md-9 col-posts">
+    <div class="col-md-8 col-posts">
    
     <div class="content">
       
@@ -390,7 +390,7 @@
     </div>
   </div>
   
-  <div class="col-md-3 h-100 col-categories brdr-start">
+  <div class="col-md-4 h-100 col-categories brdr-start">
 
   </div>
     
@@ -439,7 +439,7 @@
 
 
     <div class="row g-0 h-fill">
-      <div class="col-md-9 h-100">
+      <div class="col-md-8 h-100">
        <div class="content">
          <div class="row">
            <div class="col-8"></div>
@@ -453,7 +453,7 @@
        </div>
       </div>
       
-      <div class="col-md-3 h-100 preview-screen">
+      <div class="col-md-4 h-100 preview-screen">
        
        </div>
        </div>
@@ -471,7 +471,7 @@
        
        
        <div class="row g-0 h-fill">
-       <div class="col-md-9 h-100">
+       <div class="col-md-8 h-100">
        
          <div class="content no-pad col-editor">
        
@@ -498,7 +498,7 @@
        
          </div>
        </div>
-       <div class="col-md-3 h-100 preview-screen">
+       <div class="col-md-4 h-100 preview-screen">
        
        </div>
        </div>
@@ -516,7 +516,7 @@
     
         
     <div class="row g-0 h-fill">
-    <div class="col-md-9 h-100">
+    <div class="col-md-8 h-100">
     
       <div class="content no-pad col-editor">
      {#each Object.keys(data.settings) as key, val}
@@ -525,7 +525,7 @@
      {/each}
       </div>
     </div>
-    <div class="col-md-3 h-100 preview-screen">
+    <div class="col-md-4 h-100 preview-screen">
    
     </div>
     </div>
