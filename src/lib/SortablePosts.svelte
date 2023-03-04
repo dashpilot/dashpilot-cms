@@ -47,7 +47,7 @@
 				
 			</div>
 			<div class="col-3 text-end">
-				<button class="btn btn-outline-secondary btn-delete" on:click={()=>deletePost(item.id)}><i class="fas fa-trash"></i></button>
+			<i class="fas fa-trash" on:click={()=>deletePost(item.id)}></i>
 				
 			</div>
 		</div>	
@@ -119,37 +119,23 @@ const flipDurationMs = 300;
   -->
   
   <style>
-		  .item-list{
-			border: 1px solid #D2D2D2;
-			border-bottom: 0;
-			padding: 15px;
-		
-		  }
-		  
-		  .item-list:last-child{
-			border-bottom: 1px solid #D2D2D2;
-		  }
-		  
-		  .item-list a{
-			color: black;
-		  }
-		  
-		  .item-list a:hover{
-			text-decoration: underline;
-		  }
-		  
-		  .col-9{
-			  padding-top: 6px;
-			  padding-left: 20px;
-			  color: black;
-		  }
-		  
+	
 		  .col-9 a{
 			  color: black;
 		  }
 		  
+		  .list-group-item{
+			  padding: 15px;
+			  padding-left: 20px;
+			  padding-right: 20px;
+		  }
+		  
 		  .handle{
 			  cursor: grab;
+		  }
+		  
+		  .fa-trash{
+			  cursor: pointer;
 		  }
 		  
 	</style>

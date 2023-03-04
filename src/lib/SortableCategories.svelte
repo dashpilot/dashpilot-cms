@@ -1,21 +1,18 @@
 <script>
-import {dndzone} from "svelte-dnd-action";
+import Sortable from "svelte-sortable"
 import {flip} from "svelte/animate";
 
 export let data;
 let items = data.categories;
 
+let options = {handle: '.handle'}
 
-const flipDurationMs = 300;
-  
-  function handleDndConsider(e) {
-	items = e.detail.items;
-  }
-  function handleDndFinalize(e) {
-	items = e.detail.items;
+
+function onChange() {
 	data.categories = items;
-	console.log(data)
-  }
+}
+
+
   
   function deleteCat(id){
 	  var sure = confirm("Are you sure you wish to delete this item?")
@@ -23,11 +20,43 @@ const flipDurationMs = 300;
 		  let index = data.categories.findIndex(x=>x.id==id);
 		  data.categories.splice(index, 1);
 		  data = data;
+		  items = items;
 	  }
   }
 </script>
 
+<ul class="list-group">
+<Sortable {items}
+		  let:item={item}
+		  on:change={onChange} bind:options={options}>
+	<li class="list-group-item">
 	
+		
+		<div class="row">
+			<div class="col-9 text-truncate">
+				
+				<i class="fas fa-grip-vertical handle"></i> &nbsp;&nbsp;
+				
+				<a href="/category/{item.id}/edit" data-navigo>
+				{#if item.title==''}Untitled{:else}{item.title}{/if}
+				</a>
+				
+			</div>
+			<div class="col-3 text-end">
+			<i class="fas fa-trash" on:click={()=>deleteCat(item.id)}></i>
+				
+			</div>
+		</div>	
+		
+		
+		
+	</li>
+</Sortable>
+</ul>
+
+
+	
+<!--
   <ul class="list-group entries-list" use:dndzone="{{items, flipDurationMs}}" on:consider="{handleDndConsider}" on:finalize="{handleDndFinalize}">
 	{#each items as item(item.id)}
 	<li class="list-group-item item-list" animate:flip="{{duration: flipDurationMs}}">
@@ -50,33 +79,27 @@ const flipDurationMs = 300;
 		</li>
 	{/each}
   </ul>
+  -->
   
   
   <style>
-		.item-list{
-		  border: 1px solid #D2D2D2;
-		  border-bottom: 0;
-		  padding: 15px;
-		}
 		
-		.item-list:last-child{
-		  border-bottom: 1px solid #D2D2D2;
-		}
-		
-		.item-list a{
-		  color: black;
-		}
-		
-		.item-list a:hover{
-		  text-decoration: underline;
-		}
-		
-		.col-9{
-			padding-top: 6px;
-			padding-left: 20px;
-		}
-		
-		.btn-opacity{
-			opacity: 0;
-		}
+		  .col-9 a{
+			  color: black;
+		  }
+		  
+		  .list-group-item{
+			  padding: 15px;
+			  padding-left: 20px;
+			  padding-right: 20px;
+		  }
+		  
+		  .handle{
+			  cursor: grab;
+		  }
+		  
+		  .fa-trash{
+			  cursor: pointer;
+		  }
+		  
   </style>
