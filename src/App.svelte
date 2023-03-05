@@ -328,8 +328,9 @@
       
     </div>
     <div class="col-md-4">
-      
+      <!--
       <Card title="Latest Post" number="{latest.title}" msg="&nbsp; {count} words" icon="fa-clock" icon2="fa-solid fa-calculator" />
+      -->
     </div>
     <div class="col-md-4">
       <Card title="Version" number="0.4.3" msg="&nbsp;up to date" icon="fa-rocket" icon2="fa-check" />
