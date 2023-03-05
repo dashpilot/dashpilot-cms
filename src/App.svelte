@@ -41,11 +41,14 @@
   let showPublish;
   let showPreview;
   
+  let default_cat = 1;
+  
   onMount(async () => {
     
     const res = await fetch(cfg.dataPath, {cache: "no-store"});
     data = await res.json();
     console.log(data)
+    default_cat = data.settings.default_category;
     
     router = new Navigo("/");
     
@@ -291,13 +294,14 @@
 <nav>
   <header></header>
   
+  
   <ul>
     
     <li>
       
       <a href="/" class:active={tab === 'dashboard'}  data-navigo><i class="fa-solid fa-gauge"></i> <span class="mob-hide">Dashboard</span></a></li>
 
-    <li><a href="/posts/{data.settings.default_category}" class:active={tab === 'posts'}  data-navigo><i class="fa-solid fa-bolt"></i> <span class="mob-hide">Posts</span></a></li>
+    <li><a href="/posts/{default_cat}" class:active={tab === 'posts'}  data-navigo><i class="fa-solid fa-bolt"></i> <span class="mob-hide">Posts</span></a></li>
     
     <li><a href="/categories" class:active={tab === 'categories'}  data-navigo><i class="fa-solid fa-tag"></i> <span class="mob-hide">Categories</span></a></li>
     
