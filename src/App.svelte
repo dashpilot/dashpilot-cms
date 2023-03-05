@@ -11,7 +11,6 @@
   // import Preview from "./lib/Preview.svelte";
   import Card from "./lib/Card.svelte";
   import Publish from "./lib/Publish.svelte";
-  import Preview from "./lib/Preview.svelte";
   import LivePreview from "./lib/LivePreview.svelte";
 
   
@@ -401,7 +400,9 @@
     {#if show=='post'}
    <header><h5>Edit Post</h5>
  
+ <!--
  <button class="btn btn-dark btn-preview" on:click="{()=>showPreview=true}"><i class="fas fa-binoculars"></i> &nbsp;Preview</button>
+ -->
  
  </header>
       
@@ -419,13 +420,11 @@
       </div>
       <div class="col-md-6 h-100 preview-screen">
         
-        {#if showPreview}
-        <Preview bind:showPreview bind:data bind:postId />
-        {/if}
-        
-        
      
+   
       <LivePreview bind:data bind:postId />
+   
+   
       </div>
       </div>
 
