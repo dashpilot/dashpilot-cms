@@ -12,6 +12,7 @@
   import Card from "./lib/Card.svelte";
   import Publish from "./lib/Publish.svelte";
   import Preview from "./lib/Preview.svelte";
+  import LivePreview from "./lib/LivePreview.svelte";
 
   
   import SortablePosts from "./lib/SortablePosts.svelte";
@@ -405,7 +406,7 @@
  </header>
       
       <div class="row g-0 h-fill">
-      <div class="col-md-8 h-100">
+      <div class="col-md-6 h-100">
     
         <div class="content no-pad col-editor pb-5">
           
@@ -416,13 +417,15 @@
         
        
       </div>
-      <div class="col-md-4 h-100 preview-screen">
+      <div class="col-md-6 h-100 preview-screen">
         
         {#if showPreview}
         <Preview bind:showPreview bind:data bind:postId />
         {/if}
+        
+        
      
-       <!-- <Preview bind:data bind:postId />-->
+      <LivePreview bind:data bind:postId />
       </div>
       </div>
 
@@ -521,7 +524,12 @@
       <div class="content no-pad col-editor">
      {#each Object.keys(data.settings) as key, val}
      <label>{key.replaceAll('_', ' ')}</label>
+     
+     {#if key=='preview_css'}
+     <textarea class="form-control" id="{key}" bind:value={data.settings[key]}></textarea>
+     {:else}
      <input type="text" class="form-control" bind:value={data.settings[key]} />
+     {/if}
      {/each}
       </div>
     </div>
@@ -566,12 +574,12 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 250px;
+    width:200px;
     background-color: #333333;
   }
   
   main{
-    padding-left: 250px;
+    padding-left: 200px;
   }
   
   header{
@@ -654,5 +662,8 @@
     height: calc(100% - 60px);
   }
   
+  #preview_css{
+    height: 200px;
+  }
 
 </style>

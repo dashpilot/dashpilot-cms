@@ -57,7 +57,11 @@
     { "id": "4", "title": "Tools", "slug": "tools", "type": "post" }
   ],
   "design": { "bgcolor": "#F7FCFA", "fgcolor": "#000000" },
-  "settings": { "title": "My Website", "image_width": "800" },
+  "settings": {
+    "title": "My Website",
+    "image_width": "800",
+    "preview_css": ""
+  },
   "category": "home",
   "permissions": { "categories": true, "types": true, "settings": true },
   "types": [
