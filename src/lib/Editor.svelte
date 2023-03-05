@@ -1,5 +1,6 @@
 <script>
 	import TextEditor from "../widgets/TextEditor.svelte"
+	import Markdown from "../widgets/Markdown.svelte"
 	import Gallery from "../widgets/Gallery.svelte"
 	import {slugify} from './Helpers.svelte';
 	
@@ -39,6 +40,12 @@
 
   <TextEditor bind:html={data.posts[index][curFields[key].title]} />
 
+  {/if}
+  
+  {#if curFields[key].type == 'mde'}
+  
+	<Markdown bind:html={data.posts[index][curFields[key].title]} />
+  
   {/if}
   
   {#if curFields[key].type == 'gal'}

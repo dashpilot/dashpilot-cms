@@ -1,6 +1,10 @@
+<svelte:head>
+<link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+</svelte:head>
 <script>
+import EasyMDE from "easymde";
 import { onMount, onDestroy } from 'svelte';
-export let key;
+let key = Date.now();
 export let html;
 let easyMDE = false;
 
