@@ -8,7 +8,8 @@
  
   import {slugify} from "./lib/Helpers.svelte";
   import Editor from "./lib/Editor.svelte";
-  // import Preview from "./lib/Preview.svelte";
+  import EditorSide from "./lib/EditorSide.svelte";
+  
   import Card from "./lib/Card.svelte";
   import Publish from "./lib/Publish.svelte";
   import LivePreview from "./lib/LivePreview.svelte";
@@ -425,10 +426,14 @@
       </div>
       <div class="col-md-6 h-100 preview-screen">
         
-     
+     {#if data.settings.preview}
    
       <LivePreview bind:data bind:postId />
-   
+     {:else}
+     
+    <EditorSide bind:data bind:postId />
+     
+     {/if}
    
       </div>
       </div>

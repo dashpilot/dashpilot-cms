@@ -1,0 +1,33 @@
+<script>
+
+	export let postId;
+	export let data; 
+	
+	let index;
+	let post;
+	let cat;
+	let curType;
+	let curFields;
+
+	index = data.posts.findIndex(x=>x.id==postId);
+	post = data.posts.filter(x=>x.id==postId)[0];
+		
+	cat = data.categories.filter(x=>x.id==post.category)[0]
+	curType = data.types.filter(x=>x.slug==cat.type)[0];
+	curFields = curType.fields;
+
+	
+</script>
+ 
+
+  {#each Object.keys(curFields) as key}
+
+  <label>{curFields[key].title}</label>
+ 
+ {#if curFields[key].type == 'txt'}
+  
+  <input type="text" class="form-control" bind:value={data.posts[index][curFields[key].title]}>
+  
+  {/if}
+  
+  {/each}
