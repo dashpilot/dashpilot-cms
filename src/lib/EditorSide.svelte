@@ -22,9 +22,11 @@
 
   {#each Object.keys(curFields) as key}
 
-  <label>{curFields[key].title}</label>
+
  
  {#if curFields[key].type == 'txt'}
+ 
+ <label>{curFields[key].title}</label>
   
   <input type="text" class="form-control" bind:value={data.posts[index][curFields[key].title]}>
   
