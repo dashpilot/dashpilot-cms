@@ -413,7 +413,7 @@
  </header>
       
       <div class="row g-0 h-fill">
-      <div class="col-md-6 h-100">
+      <div class="col-md-8 h-100">
     
         <div class="content no-pad col-editor pb-5">
           
@@ -424,7 +424,7 @@
         
        
       </div>
-      <div class="col-md-6 h-100 preview-screen">
+      <div class="col-md-4 h-100 preview-screen">
         
      {#if data.settings.preview}
    
