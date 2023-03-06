@@ -34,7 +34,10 @@
   
   {#each Object.keys(curFields) as key}
 
+
+  {#if curFields[key].type !== 'txt'}
   <label>{curFields[key].title}</label>
+  {/if}
  
   {#if curFields[key].type == 'rte'}
 
