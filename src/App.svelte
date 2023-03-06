@@ -422,7 +422,6 @@
         
         </div>
         
-       
       </div>
       <div class="col-md-4 h-100 preview-screen">
         
