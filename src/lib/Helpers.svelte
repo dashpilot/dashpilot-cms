@@ -5,6 +5,7 @@
 		str = 'untitled';
 	  }
 	  
+	  str = str.replace(/(<([^>]+)>)/gi, ""); // strip tags
 	  str = str.replace(/^\s+|\s+$/g, ''); // trim
 	  str = str.toLowerCase();
 	  
