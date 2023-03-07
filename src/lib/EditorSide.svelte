@@ -44,7 +44,7 @@
  
    {#each cat.subcategories as subcat}
     
-    <option value={subcat}>
+    <option value={subcat} class="form-control">
        {subcat}
      </option>
   
