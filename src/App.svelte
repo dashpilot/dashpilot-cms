@@ -17,6 +17,7 @@
   
   import SortablePosts from "./lib/SortablePosts.svelte";
   import SortableCategories from "./lib/SortableCategories.svelte";
+  import SortableSubs from "./lib/SortableSubs.svelte";
   import ProfileCard from "./lib/ProfileCard.svelte";
 
   let data;
@@ -491,6 +492,15 @@
         <label>Category Slug</label>
         <div class="alert alert-warning" id="cat-slug">{cat.slug}</div>
         -->
+        
+        {#if data.settings.has_subcategories}
+        
+        
+        
+    
+       <SortableSubs bind:data bind:id={cat.id} />
+        
+        {/if}
     
         
         {/if}
@@ -523,8 +533,14 @@
      {#each Object.keys(data.settings) as key, val}
      <label>{key.replaceAll('_', ' ')}</label>
      
-     {#if key=='preview_css'}
-     <textarea class="form-control" id="{key}" bind:value={data.settings[key]}></textarea>
+     {#if key.includes('has')}
+    
+     
+     <div class="form-check form-switch">
+       <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" bind:checked={data.settings[key]}>
+      
+     </div>
+     
      {:else}
      <input type="text" class="form-control" bind:value={data.settings[key]} />
      {/if}

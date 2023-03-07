@@ -53,14 +53,24 @@
   "categories": [
     { "id": "1", "title": "Home", "slug": "home", "type": "post" },
     { "id": "2", "title": "About", "slug": "about", "type": "post" },
-    { "id": "3", "title": "Blog", "slug": "blog", "type": "post" },
+    {
+      "id": "3",
+      "title": "Blog",
+      "slug": "blog",
+      "type": "post",
+      "subcategories": [
+        { "id": 1, "title": "category 1" },
+        { "id": 2, "title": "category 2" }
+      ]
+    },
     { "id": "4", "title": "Tools", "slug": "tools", "type": "post" }
   ],
   "design": { "bgcolor": "#F7FCFA", "fgcolor": "#000000" },
   "settings": {
     "title": "My Website",
     "image_width": "800",
-    "preview_css": ""
+    "preview_css": "",
+    "has_subcategories": true
   },
   "category": "home",
   "permissions": { "categories": true, "types": true, "settings": true },
@@ -72,7 +82,7 @@
       "fields": [
         { "title": "body", "description": "", "type": "mde" },
         { "title": "gallery", "description": "", "type": "gal" },
-        { "title": "code", "description": "", "type": "txta" }
+        { "title": "subcategory", "description": "", "type": "subcategory" }
       ]
     }
   ]

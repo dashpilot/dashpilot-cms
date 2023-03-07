@@ -57,17 +57,18 @@
   <label>{curFields[key].title.replaceAll('_', ' ')}</label>
    
    {#if curFields[key].type=='subcategory'}
+   {#if cat.subcategories}
    <select bind:value={data.posts[index][curFields[key].title]} class="form-select">
  
    {#each cat.subcategories as subcat}
     
-    <option value={subcat}>
-       {subcat}
+    <option value={subcat.id}>
+       {subcat.title}
      </option>
   
     {/each}
     </select>
-    
+    {/if}
     {/if}
     
     {/if}
