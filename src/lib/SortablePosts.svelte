@@ -45,7 +45,7 @@
 				<i class="fas fa-grip-vertical handle"></i> &nbsp;&nbsp;
 				
 				<a href="/post/{item.id}" data-navigo>
-				{#if item.title==''}Untitled{:else}{item.title}{/if}
+				{#if item.title==''}Untitled{:else}{item.title.replace(/(<([^>]+)>)/gi, "")}{/if}
 				</a>
 				
 			</div>
