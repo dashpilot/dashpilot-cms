@@ -39,7 +39,7 @@
   
   <label>{curFields[key].title.replaceAll('_', ' ')}</label>
    
-   {#if cat.subcategories}
+   {#if curFields[key].type=='subcategory'}
    <select bind:value={data.posts[index][curFields[key].title]}>
  
    {#each cat.subcategories as subcat}
