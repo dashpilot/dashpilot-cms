@@ -67,7 +67,7 @@
    
     router.on("/posts/:catid", async function (props) {
       show = 'posts'
-      tab = 'posts'
+      tab = props.data.catid;
       catId = props.data.catid;
       posts = data.posts.filter(x=>x.category==catId)
       showSave = true;
@@ -82,7 +82,7 @@
     
     router.on("/post/:id", async function (props) {    
       show = 'post'
-      tab = 'posts'
+     
       postId = props.data.id;
       showSave = true;
       
@@ -90,6 +90,8 @@
       if(!postExists){
         router.navigate('/posts/home')
       }
+      
+      tab = postExists.category;
       
       hydrate()
     });
@@ -302,7 +304,16 @@
       
       <a href="/" class:active={tab === 'dashboard'}  data-navigo><i class="fa-solid fa-gauge"></i> <span class="mob-hide">Dashboard</span></a></li>
 
+    <!--
     <li><a href="/posts/{default_cat}" class:active={tab === 'posts'}  data-navigo><i class="fa-solid fa-bolt"></i> <span class="mob-hide">Posts</span></a></li>
+    -->
+    
+    {#if data}
+    {#each data.categories as item}
+    <li><a href="/posts/{item.id}" class="indent" class:active={tab === item.id}  data-navigo><i class="fa-solid fa-tag"></i> <span class="mob-hide">{item.title}</span></a></li>
+    {/each}
+    {/if}
+    
     
     <li><a href="/categories" class:active={tab === 'categories'}  data-navigo><i class="fa-solid fa-tag"></i> <span class="mob-hide">Categories</span></a></li>
     
@@ -361,10 +372,13 @@
    
     <div class="content">
       
+      <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
       
+      <!--
       <div class="row">
         <div class="col-8">
           
+      
           <div class="dropdown">
             <button
               class="btn btn-dark dropdown-toggle text-capitalize"
@@ -383,18 +397,20 @@
             
             </ul>
           </div>
+       
           
         </div>
         <div class="col-4 text-end">
-          <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
+        
         </div>
       </div>
-   
+   -->
   
       <SortablePosts bind:items={posts} bind:data bind:catId />
     
     </div>
   </div>
+ 
   
   <div class="col-md-4 h-100 col-categories brdr-start">
 
@@ -452,13 +468,9 @@
     <div class="row g-0 h-fill">
       <div class="col-md-8 h-100">
        <div class="content">
-         <div class="row">
-           <div class="col-8"></div>
-           <div class="col-4 text-end"><button class="btn btn-dark mb-3 ms-auto" on:click={addCat}><i class="fas fa-plus"></i></button></div>
-                     
-         </div>
-       
          
+         <button class="btn btn-dark mb-3 ms-auto" on:click={addCat}><i class="fas fa-plus"></i></button>
+       
          <SortableCategories bind:data />
         
        </div>
@@ -621,6 +633,10 @@
   nav a.active, nav a:hover{
     background-color: #666BEF;
     color: white;
+  }
+  
+  .indent{
+    padding-left: 45px;
   }
  
   .col-categories ul{
