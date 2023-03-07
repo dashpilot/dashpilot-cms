@@ -42,7 +42,7 @@
 	
 		
 		<div class="row">
-			<div class="col-9 text-truncate">
+			<div class="col-8 text-truncate">
 				
 				<i class="fas fa-grip-vertical handle"></i> &nbsp;&nbsp;
 				
@@ -51,15 +51,17 @@
 				</a>
 				
 				{#if item.draft}
-				<span class="badge bg-secondary ms-3">draft</span>
+				<span class="badge bg-secondary ms-2">draft</span>
 				{/if}
 				
-				{#if item.subcategory}
-				<span class="badge bg-primary ms-3">{cat.subcategories.filter(x=>x.id==item.subcategory)[0].title}</span>
-				{/if}
+			
 				
 			</div>
-			<div class="col-3 text-end">
+			<div class="col-4 text-end">
+				{#if item.subcategory}
+				<span class="badge bg-primary me-2">{cat.subcategories.filter(x=>x.id==item.subcategory)[0].title}</span>
+				{/if}
+				
 			<i class="fas fa-trash" on:click={()=>deletePost(item.id)}></i>
 				
 			</div>
