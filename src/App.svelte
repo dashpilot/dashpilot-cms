@@ -680,6 +680,7 @@
     padding: 5px 30px;
     overflow: hidden;
     overflow-y: auto;
+    padding-bottom: 40px !important;
   }
   
   .brdr-start{
