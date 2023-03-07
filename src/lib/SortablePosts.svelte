@@ -13,7 +13,7 @@
 		console.log(items)
 		let nothere = data.posts.filter(x => x.category !== catId)
 		data.posts = items.concat(nothere);
-		items = items;
+		// items = items;
 		data = data;
 	}
 	
