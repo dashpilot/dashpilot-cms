@@ -246,7 +246,7 @@
    
     data.categories[index].slug = slug;
     data.categories = data.categories;
-    // document.getElementById('cat-slug').innerText = slug;
+   document.getElementById('cat-slug').innerText = slug;
     
   }
   
@@ -478,7 +478,7 @@
        </div>
       </div>
       
-      <div class="col-md-4 h-100 preview-screen">
+      <div class="col-md-4 h-100 sidebar">
        
        </div>
        </div>
@@ -507,15 +507,18 @@
         
       
         <label>Category Slug</label>
-        <div class="alert alert-success" id="cat-slug"></div>
+        
+        <div class="alert alert-warning" id="cat-slug">category-{cat.id}</div>
+       
   
         {:else}
         <input type="text" class="form-control" bind:value={cat.title}>
         
-        <!--
+     <!--
         <label>Category Slug</label>
-        <div class="alert alert-success" id="cat-slug"></div>
+        <div class="alert alert-warning" id="cat-slug">{cat.slug}</div>
         -->
+    
         
         {/if}
         
@@ -523,7 +526,7 @@
        
          </div>
        </div>
-       <div class="col-md-4 h-100 preview-screen">
+       <div class="col-md-4 h-100 sidebar">
        
        </div>
        </div>
@@ -555,7 +558,7 @@
      {/each}
       </div>
     </div>
-    <div class="col-md-4 h-100 preview-screen">
+    <div class="col-md-4 h-100 sidebar">
    
     </div>
     </div>
@@ -674,13 +677,21 @@
     padding-top: 5px;
   }
   
+  .sidebar{
+    border-left: 1px solid #d2d2d2;
+    background-color: white;
+    padding: 5px 30px;
+   
+  }
+  
+  
   .editor-sidebar{
     border-left: 1px solid #d2d2d2;
     background-color: white;
     padding: 5px 30px;
     overflow: hidden;
     overflow-y: auto;
-    padding-bottom: 40px !important;
+    padding-bottom: 30px !important;
   }
   
   .brdr-start{

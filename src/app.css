@@ -142,13 +142,13 @@ small {
     height: auto !important;
   }
 
-  .col-md-4 {
+  .sidebar {
     display: none;
   }
 
   .editor-sidebar {
     display: block;
     border-top: 1px solid #ddd;
-    padding-bottom: 40px !important;
+    padding-bottom: 30px !important;
   }
 }
