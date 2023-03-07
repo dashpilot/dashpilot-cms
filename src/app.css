@@ -51,13 +51,13 @@ header h5 {
   margin-bottom: 20px;
   border-top: 0;
   background-color: #ffffff;
-  height: 430px !important;
+  height: 420px !important;
   overflow: hidden;
   overflow-y: auto;
 }
 
 .CodeMirror {
-  height: 440px !important;
+  height: 400px !important;
 }
 
 .CodeMirror-fullscreen {
