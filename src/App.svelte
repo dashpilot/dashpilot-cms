@@ -12,7 +12,7 @@
   
   import Card from "./lib/Card.svelte";
   import Publish from "./lib/Publish.svelte";
-  import LivePreview from "./lib/LivePreview.svelte";
+  import Preview from "./lib/Preview.svelte";
 
   
   import SortablePosts from "./lib/SortablePosts.svelte";
@@ -40,7 +40,7 @@
   let count;
   
   let showPublish;
-  let showPreview;
+  let showPreview = false;
   
 
   
@@ -393,11 +393,14 @@
  {/if}
   
     {#if show=='post'}
-   <header><h5>Edit Post</h5>
- 
- <!--
- <button class="btn btn-dark btn-preview" on:click="{()=>showPreview=true}"><i class="fas fa-binoculars"></i> &nbsp;Preview</button>
- -->
+   <header>
+   
+ {#if data.settings.preview}    
+ <button class="btn btn-dark" on:click="{()=>showPreview=true}"><i class="fas fa-binoculars"></i> &nbsp;Preview</button>
+ {:else}
+ <h5>Edit Post</h5>
+ {/if}
+
  
  </header>
       
@@ -413,15 +416,14 @@
         
       </div>
       <div class="col-md-4 h-100 editor-sidebar">
-        
-     {#if data.settings.preview}
-   
-      <LivePreview bind:data bind:postId />
-     {:else}
+       
+       {#if showPreview} 
+        <Preview bind:data bind:postId bind:showPreview />
+       {/if}
+
      
     <EditorSide bind:data bind:postId />
-     
-     {/if}
+  
    
       </div>
       </div>
