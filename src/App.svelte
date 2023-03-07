@@ -365,7 +365,8 @@
     {#if show=='posts'}
 
     <header>
-     <h5>Posts</h5>
+   <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
+     
       </header>
   
     <div class="row g-0 h-100">
@@ -374,39 +375,9 @@
    
     <div class="content">
       
-      <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
+
       
-      <!--
-      <div class="row">
-        <div class="col-8">
-          
-      
-          <div class="dropdown">
-            <button
-              class="btn btn-dark dropdown-toggle text-capitalize"
-              type="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-             Category: {data.categories.filter(x=>x.id==catId)[0].title}
-            </button>
-            <ul class="dropdown-menu" id="cat-dropdown">
-              
-              {#each data.categories as item}
-              <li><a href="/posts/{item.id}" on:click={closeDropDown} class="dropdown-item" class:active={catId === item.id} data-navigo>{#if item.title==''}Untitled{:else}{item.title}{/if}</a></li>
-              {/each}
-            
-            
-            </ul>
-          </div>
-       
-          
-        </div>
-        <div class="col-4 text-end">
-        
-        </div>
-      </div>
-   -->
+    
   
       <SortablePosts bind:items={posts} bind:data bind:catId />
     
@@ -463,16 +434,16 @@
   
  
      <header>
-    <h5>Categories</h5>
+        
+    <button class="btn btn-dark mb-3 ms-auto" on:click={addCat}><i class="fas fa-plus"></i></button>
+   
      </header>
 
 
     <div class="row g-0 h-fill">
       <div class="col-md-8 h-100">
        <div class="content">
-         
-         <button class="btn btn-dark mb-3 ms-auto" on:click={addCat}><i class="fas fa-plus"></i></button>
-       
+    
          <SortableCategories bind:data />
         
        </div>
