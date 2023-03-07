@@ -6,6 +6,8 @@
 	export let catId;
 	let options = {handle: '.handle'}
 	
+	let cat = data.categories.filter(x=>x.id==catId)[0];
+	
  
 	function onChange() {
 		console.log('changed')
@@ -47,6 +49,14 @@
 				<a href="/post/{item.id}" data-navigo>
 				{#if item.title==''}Untitled{:else}{item.title.replace(/(<([^>]+)>)/gi, "")}{/if}
 				</a>
+				
+				{#if item.draft}
+				<span class="badge bg-secondary ms-3">draft</span>
+				{/if}
+				
+				{#if item.subcategory}
+				<span class="badge bg-primary ms-3">{cat.subcategories.filter(x=>x.id==item.subcategory)[0].title}</span>
+				{/if}
 				
 			</div>
 			<div class="col-3 text-end">
