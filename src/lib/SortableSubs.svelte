@@ -27,8 +27,9 @@ let options = {handle: '.handle'}
 function onChange() {
 	data.categories[index].subcategories = items;
 	data = data;
-	items = data.categories[index].subcategories;
-	items = items;
+	// items = data.categories[index].subcategories;
+	//data = data;
+	// items = items;
 	
 	/*
 	data.categories = items;
