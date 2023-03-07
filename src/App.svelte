@@ -77,7 +77,7 @@
         router.navigate('/posts/1')
       }
       
-      tab = props.data.catid;
+      tab = "cat-"+props.data.catid;
       
       hydrate()
     });
@@ -93,7 +93,7 @@
         router.navigate('/posts/home')
       }
       
-      tab = postExists.category;
+      tab = "cat-"+postExists.category;
       
       hydrate()
     });
@@ -312,7 +312,7 @@
     
     {#if data}
     {#each data.categories as item}
-    <li><a href="/posts/{item.id}" class="indent" class:active={tab === item.id}  data-navigo><i class="fa-solid fa-tag"></i> <span class="mob-hide">{item.title}</span></a></li>
+    <li><a href="/posts/{item.id}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo><i class="fa-solid fa-tag"></i> <span class="mob-hide">{item.title}</span></a></li>
     {/each}
     {/if}
     
