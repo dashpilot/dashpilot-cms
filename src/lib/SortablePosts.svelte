@@ -36,6 +36,8 @@
 		  submap[subcat.id] = subcat.title;
 	  });
 	  console.log(submap)
+	  
+	  $: catId = subcats && submap;
  
 </script>
 
