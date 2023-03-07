@@ -312,7 +312,7 @@
     
     {#if data}
     {#each data.categories as item}
-    <li><a href="/posts/{item.id}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo><i class="fa-solid fa-tag"></i> <span class="mob-hide">{item.title}</span></a></li>
+    <li><a href="/posts/{item.id}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
     {/each}
     {/if}
     
