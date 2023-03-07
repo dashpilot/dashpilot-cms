@@ -18,14 +18,10 @@
 	curType = data.types.filter(x=>x.slug==cat.type)[0];
 	curFields = curType.fields;
 
-
-	
 </script>
  
 
   {#each Object.keys(curFields) as key}
-
-
  
  {#if curFields[key].type == 'txt'}
  
