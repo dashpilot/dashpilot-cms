@@ -42,14 +42,14 @@
   let showPublish;
   let showPreview;
   
-  let default_cat = 1;
+
   
   onMount(async () => {
     
     const res = await fetch(cfg.dataPath, {cache: "no-store"});
     data = await res.json();
     console.log(data)
-    default_cat = data.settings.default_category;
+ 
     
     router = new Navigo("/");
     

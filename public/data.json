@@ -60,8 +60,7 @@
   "settings": {
     "title": "My Website",
     "image_width": "800",
-    "preview_css": "",
-    "default_category": "1"
+    "preview_css": ""
   },
   "category": "home",
   "permissions": { "categories": true, "types": true, "settings": true },
