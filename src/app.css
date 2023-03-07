@@ -60,6 +60,10 @@ header h5 {
   height: 440px !important;
 }
 
+.CodeMirror-fullscreen {
+  height: 100% !important;
+}
+
 label {
   display: block;
   font-size: 14px;
