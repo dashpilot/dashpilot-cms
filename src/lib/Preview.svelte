@@ -31,7 +31,7 @@ function previewPost(){
 
 
 <div class="backdrop" in:fade={{duration: 700}} out:fade={{duration: 200}}>
-<div class="modal modal-lg" tabindex="-1" style="display: block;">
+<div class="modal modal-xl" tabindex="-1" style="display: block;">
   <div class="modal-dialog">
 	<div class="modal-content">
 	  <div class="modal-header">
@@ -41,7 +41,7 @@ function previewPost(){
 	  <div class="modal-body p-0">
 	
 
-		<iframe src="{remote_preview}" width="798" height="600" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
+		<iframe src="{remote_preview}" width="1140" height="600" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
 
 
 	  </div>
