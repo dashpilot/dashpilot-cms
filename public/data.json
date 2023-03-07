@@ -71,7 +71,7 @@
       "title": "Post",
       "slug": "post",
       "fields": [
-        { "title": "body", "description": "", "type": "rte" },
+        { "title": "body", "description": "", "type": "mde" },
         { "title": "gallery", "description": "", "type": "gal" },
         { "title": "code", "description": "", "type": "txta" }
       ]
