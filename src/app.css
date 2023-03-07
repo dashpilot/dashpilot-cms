@@ -51,6 +51,13 @@ header h5 {
   margin-bottom: 20px;
   border-top: 0;
   background-color: #ffffff;
+  height: 420px !important;
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.CodeMirror {
+  height: 420px !important;
 }
 
 label {
@@ -123,5 +130,21 @@ small {
 
   main {
     padding-left: 55px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .h-100 {
+    height: auto !important;
+  }
+
+  .col-md-4 {
+    display: none;
+  }
+
+  .editor-sidebar {
+    display: block;
+    border-top: 1px solid #ddd;
+    padding-bottom: 40px !important;
   }
 }

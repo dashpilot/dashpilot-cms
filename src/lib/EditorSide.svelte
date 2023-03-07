@@ -1,4 +1,5 @@
 <script>
+  import Gallery from "../widgets/Gallery.svelte"
 
 	export let postId;
 	export let data; 
@@ -31,6 +32,22 @@
  <label>{curFields[key].title.replaceAll('_', ' ')}</label>
   
   <input type="text" class="form-control" bind:value={data.posts[index][curFields[key].title]}>
+  
+  {/if}
+  
+  {#if curFields[key].type == 'gal'}
+  
+  <label>{curFields[key].title.replaceAll('_', ' ')}</label>
+  <Gallery bind:item={data.posts[index][curFields[key].title]} key="0" bind:settings={data.settings}  />
+  
+  {/if}
+  
+  
+  
+  {#if curFields[key].type == 'txta'}
+  <label>{curFields[key].title.replaceAll('_', ' ')}</label>
+  
+  <textarea class="form-control" bind:value={data.posts[index][curFields[key].title]}></textarea>
   
   {/if}
   

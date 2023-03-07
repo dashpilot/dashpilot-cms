@@ -1,7 +1,7 @@
 <script>
 	import TextEditor from "../widgets/TextEditor.svelte"
 	import Markdown from "../widgets/Markdown.svelte"
-	import Gallery from "../widgets/Gallery.svelte"
+
 	import {slugify} from './Helpers.svelte';
 	
 	
@@ -35,11 +35,13 @@
   {#each Object.keys(curFields) as key}
 
 
+
+ 
+  {#if curFields[key].type == 'rte'}
+  
   {#if curFields[key].type !== 'txt'}
   <label>{curFields[key].title}</label>
   {/if}
- 
-  {#if curFields[key].type == 'rte'}
 
   <TextEditor bind:html={data.posts[index][curFields[key].title]} />
 
@@ -47,25 +49,15 @@
   
   {#if curFields[key].type == 'mde'}
   
+  {#if curFields[key].type !== 'txt'}
+  <label>{curFields[key].title}</label>
+  {/if}
+  
 	<Markdown bind:html={data.posts[index][curFields[key].title]} />
   
   {/if}
   
-  {#if curFields[key].type == 'gal'}
-
   
-  <Gallery bind:item={data.posts[index][curFields[key].title]} key="0" bind:settings={data.settings}  />
-  
-  {/if}
-  
- 
-  
-  {#if curFields[key].type == 'txta'}
-  
-	
-	<textarea class="form-control" bind:value={data.posts[index][curFields[key].title]}></textarea>
-	
-	{/if}
   
   
   {/each}

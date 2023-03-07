@@ -441,7 +441,7 @@
         </div>
         
       </div>
-      <div class="col-md-4 h-100 preview-screen">
+      <div class="col-md-4 h-100 editor-sidebar">
         
      {#if data.settings.preview}
    
@@ -674,7 +674,7 @@
     padding-top: 5px;
   }
   
-  .preview-screen{
+  .editor-sidebar{
     border-left: 1px solid #d2d2d2;
     background-color: white;
     padding: 5px 30px;
