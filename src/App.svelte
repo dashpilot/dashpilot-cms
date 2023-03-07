@@ -169,12 +169,18 @@
   }
 
   function newId(){
-    let highest_id = Math.max(...data.posts.map(x => x.id));
+    let highest_id = 0;
+    if(data.posts.length){
+      highest_id = Math.max(...data.posts.map(x => x.id));
+    }
     return highest_id+1;
   }
   
   function newCatId(){
-    let highest_id = Math.max(...data.categories.map(x => x.id));
+    let highest_id = 0;
+    if(data.categories.length){
+      highest_id = Math.max(...data.categories.map(x => x.id));
+    }
     return highest_id+1;
   }
   

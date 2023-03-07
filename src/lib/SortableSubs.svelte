@@ -51,7 +51,7 @@ function onChange() {
   }
   
   function newCatId(){
-	  let highest_id = 1;
+	  let highest_id = 0;
 	  if(data.categories[index].subcategories.length){
 		 highest_id = Math.max(...data.categories[index].subcategories.map(x => x.id)); 
 	  }
