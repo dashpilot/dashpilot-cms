@@ -38,6 +38,14 @@
   
   {/if}
   
+  {#if curFields[key].type == 'switch'}
+  
+  <label>{curFields[key].title.replaceAll('_', ' ')}</label>
+  <div class="form-check form-switch">
+     <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" bind:checked={data.posts[index][curFields[key].title]}>
+   </div>
+   {/if}
+  
   
   
   {#if curFields[key].type == 'txta'}
@@ -49,11 +57,11 @@
   
   
   {#if curFields[key].type == 'subcategory'}
-  
+  {#if cat.subcategories}
   <label>{curFields[key].title.replaceAll('_', ' ')}</label>
    
    {#if curFields[key].type=='subcategory'}
-   {#if cat.subcategories}
+
    <select bind:value={data.posts[index][curFields[key].title]} class="form-select">
  
    {#each cat.subcategories as subcat}
