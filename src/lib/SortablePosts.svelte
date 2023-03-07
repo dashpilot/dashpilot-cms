@@ -30,14 +30,7 @@
 		  }
 	  }
 	  
-	  let subcats = cat.subcategories;
-	  let submap = [];
-	  subcats.forEach(function(subcat) {
-		  submap[subcat.id] = subcat.title;
-	  });
-	  console.log(submap)
 	  
-	  $: catId = subcats && submap;
  
 </script>
 
@@ -68,9 +61,11 @@
 			</div>
 			<div class="col-4 text-end">
 				
+				<!--
 				{#if item.subcategory}
 				<span class="badge rounded-pill bg-primary me-2">{submap[item.subcategory]}</span>
 				{/if}
+			-->
 		
 				
 			<i class="fas fa-trash" on:click={()=>deletePost(item.id)}></i>
