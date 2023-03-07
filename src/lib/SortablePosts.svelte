@@ -51,7 +51,7 @@
 				</a>
 				
 				{#if item.draft}
-				<span class="badge bg-secondary ms-2">draft</span>
+				<span class="badge rounded-pill bg-secondary ms-2">draft</span>
 				{/if}
 				
 			
@@ -59,7 +59,7 @@
 			</div>
 			<div class="col-4 text-end">
 				{#if item.subcategory}
-				<span class="badge bg-primary me-2">{cat.subcategories.filter(x=>x.id==item.subcategory)[0].title}</span>
+				<span class="badge rounded-pill bg-primary me-2">{cat.subcategories.filter(x=>x.id==item.subcategory)[0].title}</span>
 				{/if}
 				
 			<i class="fas fa-trash" on:click={()=>deletePost(item.id)}></i>

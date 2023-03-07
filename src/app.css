@@ -116,6 +116,10 @@ small {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
+.badge.bg-primary {
+  background-color: #676be7 !important;
+}
+
 @media only screen and (max-width: 1024px) {
   .col-categories {
     height: auto !important;
