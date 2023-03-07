@@ -28,6 +28,7 @@ function onChange() {
 	data.categories[index].subcategories = items;
 	data = data;
 	items = data.categories[index].subcategories;
+	items = items;
 	
 	/*
 	data.categories = items;
