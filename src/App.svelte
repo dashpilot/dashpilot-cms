@@ -31,7 +31,7 @@
   let saved;
  
   let posts;
-  let catId = 1;
+  let catId = '1';
   let cat;
   let postId;
   let action = 'edit';
@@ -67,7 +67,7 @@
    
     router.on("/posts/:catid", async function (props) {
       show = 'posts'
-      tab = props.data.catid;
+    
       catId = props.data.catid;
       posts = data.posts.filter(x=>x.category==catId)
       showSave = true;
@@ -76,6 +76,8 @@
       if(!catExists){
         router.navigate('/posts/1')
       }
+      
+      tab = props.data.catid;
       
       hydrate()
     });
