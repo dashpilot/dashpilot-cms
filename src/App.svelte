@@ -677,7 +677,7 @@
   .preview-screen{
     border-left: 1px solid #d2d2d2;
     background-color: white;
-    padding: 20px 30px;
+    padding: 3px 30px;
   }
   
   .brdr-start{

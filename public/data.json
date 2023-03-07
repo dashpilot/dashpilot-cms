@@ -73,7 +73,7 @@
       "fields": [
         { "title": "body", "description": "", "type": "mde" },
         { "title": "gallery", "description": "", "type": "gal" },
-        { "title": "code", "description": "", "type": "txta" }
+        { "title": "code", "description": "", "type": "txt" }
       ]
     }
   ]
