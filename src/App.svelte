@@ -678,6 +678,8 @@
     border-left: 1px solid #d2d2d2;
     background-color: white;
     padding: 5px 30px;
+    overflow: hidden;
+    overflow-y: auto;
   }
   
   .brdr-start{
