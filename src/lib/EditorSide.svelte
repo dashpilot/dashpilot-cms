@@ -40,11 +40,11 @@
   <label>{curFields[key].title.replaceAll('_', ' ')}</label>
    
    {#if curFields[key].type=='subcategory'}
-   <select bind:value={data.posts[index][curFields[key].title]}>
+   <select bind:value={data.posts[index][curFields[key].title]} class="form-control">
  
    {#each cat.subcategories as subcat}
     
-    <option value={subcat} class="form-control">
+    <option value={subcat}>
        {subcat}
      </option>
   
