@@ -16,7 +16,7 @@
 	
 	.card{
 		z-index: 99999999999;
-		margin-top: 160px;
+		margin-top: 60px !important;
 	}
 	
 	.profile-pic{
