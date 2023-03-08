@@ -349,7 +349,7 @@
 
   
 </nav>
-<main class="h-100">
+<main class="min-vh-100">
   
 {#if show=='dashboard'}
 <header>
@@ -388,7 +388,7 @@
      
       </header>
   
-    <div class="row g-0 h-100">
+    <div class="row g-0 min-vh-100">
   
     <div class="col-md-8 col-posts">
    
@@ -426,7 +426,7 @@
   </div>
  
   
-  <div class="col-md-4 h-100 col-categories brdr-start">
+  <div class="col-md-4 min-vh-100 col-categories brdr-start">
 
   </div>
     
@@ -446,7 +446,7 @@
  </header>
       
       <div class="row g-0 h-fill">
-      <div class="col-md-8 h-100">
+      <div class="col-md-8 min-vh-100">
     
         <div class="content no-pad col-editor pb-5">
           
@@ -456,7 +456,7 @@
         </div>
         
       </div>
-      <div class="col-md-4 h-100 editor-sidebar">
+      <div class="col-md-4 min-vh-100 editor-sidebar">
        
        {#if showPreview} 
         <Preview bind:data bind:postId bind:showPreview />
@@ -484,7 +484,7 @@
 
 
     <div class="row g-0 h-fill">
-      <div class="col-md-8 h-100">
+      <div class="col-md-8 min-vh-100">
        <div class="content">
     
          <SortableCategories bind:data />
@@ -492,7 +492,7 @@
        </div>
       </div>
       
-      <div class="col-md-4 h-100 sidebar">
+      <div class="col-md-4 min-vh-100 sidebar">
        
        </div>
        </div>
@@ -510,7 +510,7 @@
        
        
        <div class="row g-0 h-fill">
-       <div class="col-md-8 h-100">
+       <div class="col-md-8 min-vh-100">
        
          <div class="content no-pad col-editor">
        
@@ -546,7 +546,7 @@
        
          </div>
        </div>
-       <div class="col-md-4 h-100 sidebar">
+       <div class="col-md-4 min-vh-100 sidebar">
        
        </div>
        </div>
@@ -564,7 +564,7 @@
     
         
     <div class="row g-0 h-fill">
-    <div class="col-md-8 h-100">
+    <div class="col-md-8 min-vh-100">
     
       <div class="content no-pad col-editor">
      {#each Object.keys(data.settings) as key, val}
@@ -583,7 +583,7 @@
      {/each}
       </div>
     </div>
-    <div class="col-md-4 h-100 sidebar">
+    <div class="col-md-4 min-vh-100 sidebar">
    
     </div>
     </div>
