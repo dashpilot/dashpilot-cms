@@ -6,8 +6,7 @@
 	export let catId;
 	export let activeSub;
 	let options = {handle: '.handle'}
-	
-	$:data;
+
 	
 
  
@@ -18,6 +17,8 @@
 		data.posts = items.concat(nothere);
 		data.posts = data.posts;
 		data = data;
+		
+		console.log(data)
 	
 	}
 	
