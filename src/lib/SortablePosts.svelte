@@ -82,7 +82,10 @@
 </ul>
 
 {:else}
-<div class="alert alert-warning">No posts found</div>
+<div class="text-center empty-container">
+<i class="fa-regular fa-folder-open empty"></i>
+<div>No posts found</div>
+</div>
 
 {/if}
 
@@ -109,6 +112,17 @@
 		  
 		  .fa-trash{
 			  cursor: pointer;
+		  }
+		  
+		  .empty-container{
+			  color: #777;
+		  }
+		  
+		  .empty{
+			  font-size: 40px;
+			  margin-top: 40px;
+			  margin-bottom: 5px;
+			 
 		  }
 		  
 	</style>
