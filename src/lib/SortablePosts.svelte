@@ -49,9 +49,8 @@
 		<div class="row">
 			<div class="col-8 text-truncate">
 				
-				{#if activeSub==0}
+			
 				<i class="fas fa-grip-vertical handle"></i> &nbsp;&nbsp;
-				{/if}
 				
 				<a href="/post/{item.id}" data-navigo>
 				{#if item.title==''}Untitled{:else}{item.title.replace(/(<([^>]+)>)/gi, "")}{/if}

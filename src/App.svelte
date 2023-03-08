@@ -428,27 +428,25 @@
   
   <div class="col-md-4 min-vh-100 col-categories posts-side brdr-start">
     
-    <ul class="nav nav-pills mb-3">
-     
-     <li class="nav-item">
-     
-       <a class="nav-link active">Drafts</a>
-     
-      
-     </li>
-   </ul>
-    
+  
+    <!--
     <ul class="list-group">
     {#each items.filter(x=>x.draft==true) as draft}
     
-    <ul class="list-group-item">{draft.title}</ul>
+    <li class="list-group-item">
+      <a href="/post/{draft.id}" data-navigo>
+      {#if draft.title==''}Untitled{:else}{draft.title.replace(/(<([^>]+)>)/gi, "")}{/if}
+      </a>
+    </li>
+
     
     {/each}
     </ul>
+    -->
     
-    <!--
+
     <Card title="Number of posts" number="{items.length}" msg="&nbsp;in this category" icon="fa-bolt" icon2="fa-solid fa-tag" />
--->
+
   </div>
     
     </div>
