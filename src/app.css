@@ -132,6 +132,15 @@ small {
   text-decoration: underline;
 }
 
+.list-group-item {
+  border-top: 1px solid #dfdfdf !important;
+  border-bottom: 0 !important;
+}
+
+.list-group-item:last-child {
+  border-bottom: 1px solid #dfdfdf !important;
+}
+
 @media only screen and (max-width: 1024px) {
   .col-categories {
     height: auto !important;
