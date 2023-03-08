@@ -36,7 +36,6 @@
  
 </script>
 
-{catId}
 
 	
   <ul class="list-group entries-list">
