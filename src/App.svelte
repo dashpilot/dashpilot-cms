@@ -75,6 +75,8 @@
     
       catId = props.data.catid;
       posts = data.posts.filter(x=>x.category==catId)
+      
+    
       showSave = true;
       
       let catExists = data.categories.filter(x=>x.id==catId)[0];
@@ -415,7 +417,7 @@
     
   
   {data.posts[0].title}
-      <SortablePosts bind:items={posts} bind:data bind:catId bind:activeSub />
+      <SortablePosts bind:items={posts} bind:posts bind:data bind:catId bind:activeSub />
     
     </div>
   </div>

@@ -2,6 +2,7 @@
 	import Sortable from "svelte-sortable"
 	
 	export let items;
+	export let posts;
 	export let data;
 	export let catId;
 	export let activeSub;
@@ -17,8 +18,7 @@
 		data.posts = items.concat(nothere);
 		
 		data = data;
-		items = data.posts.filter(x=>x.category==catId)
-		items = items;
+
 		console.log(data)
 	
 	}
