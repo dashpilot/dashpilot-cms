@@ -33,7 +33,7 @@
  
   let posts;
   let items;
-  let catId;
+  let catId = "1";
   let cat;
   let postId;
   let action = 'edit';
@@ -75,7 +75,7 @@
       show = 'posts'
       activeSub=0;
     
-      catId = parseInt(props.data.catid);
+      catId = props.data.catid;
     
       
     
