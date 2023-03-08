@@ -432,7 +432,7 @@
      
      <li class="nav-item">
      
-       <a class="nav-link" class="active">Drafts</a>
+       <a class="nav-link active">Drafts</a>
      
       
      </li>
