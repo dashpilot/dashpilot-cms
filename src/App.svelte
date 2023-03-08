@@ -33,7 +33,7 @@
  
   let posts;
   let items;
-  let catId = "1";
+  let catId;
   let cat;
   let postId;
   let action = 'edit';
