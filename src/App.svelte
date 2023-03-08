@@ -428,9 +428,15 @@
   
   <div class="col-md-4 min-vh-100 col-categories posts-side brdr-start">
     
+    {#each items.filter(x=>x.draft==true) as draft}
     
+    <div class="">{draft.title}</div>
+    
+    {/each}
+    
+    <!--
     <Card title="Number of posts" number="{items.length}" msg="&nbsp;in this category" icon="fa-bolt" icon2="fa-solid fa-tag" />
-
+-->
   </div>
     
     </div>
