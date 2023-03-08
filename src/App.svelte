@@ -414,6 +414,7 @@
        {/if}
     
   
+  {data.posts[0].title}
       <SortablePosts bind:items={posts} bind:data bind:catId bind:activeSub />
     
     </div>
