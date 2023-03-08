@@ -51,17 +51,6 @@ header h5 {
   margin-bottom: 20px;
   border-top: 0;
   background-color: #ffffff;
-  height: 420px !important;
-  overflow: hidden;
-  overflow-y: auto;
-}
-
-.CodeMirror {
-  height: 400px !important;
-}
-
-.CodeMirror-fullscreen {
-  height: 100% !important;
 }
 
 label {
