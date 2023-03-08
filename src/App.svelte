@@ -418,8 +418,9 @@
          {/if}
        {/if}
     
-
-      <SortablePosts bind:items bind:posts bind:data bind:catId bind:activeSub />
+      {#key catId}
+      <SortablePosts bind:items bind:data bind:catId bind:activeSub />
+      {/key}
     
     </div>
   </div>

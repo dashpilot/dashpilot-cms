@@ -6,7 +6,7 @@
 	export let catId;
 	export let activeSub;
 	let options = {handle: '.handle'}
-
+	
 	
 
  
@@ -17,7 +17,7 @@
 		data.posts = items.concat(nothere);
 		
 		data = data;
-
+//items = data.posts.filter(x=>x.category==catId);
 	
 	}
 	
