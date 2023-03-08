@@ -116,7 +116,18 @@ small {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.badge.bg-primary {
+.nav-pills a {
+  color: black;
+  cursor: pointer;
+}
+
+.nav-pills a:hover {
+  color: #676be7;
+  cursor: pointer;
+}
+
+.badge.bg-primary,
+.nav-pills a.active {
   background-color: #676be7 !important;
 }
 

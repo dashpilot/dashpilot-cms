@@ -43,14 +43,17 @@
   let showPublish;
   let showPreview = false;
   
+  
+  let activeSub = 0;
 
   
   onMount(async () => {
     
+   
     const res = await fetch(cfg.dataPath, {cache: "no-store"});
     data = await res.json();
     console.log(data)
- 
+  
     
     router = new Navigo("/");
     
@@ -68,6 +71,7 @@
    
     router.on("/posts/:catid", async function (props) {
       show = 'posts'
+      activeSub=0;
     
       catId = props.data.catid;
       posts = data.posts.filter(x=>x.category==catId)
@@ -78,6 +82,8 @@
         router.navigate('/posts/1')
       }
       
+      cat = data.categories.filter(x=>x.id==catId)[0];
+  
       tab = "cat-"+props.data.catid;
       
       hydrate()
@@ -85,6 +91,7 @@
     
     router.on("/post/:id", async function (props) {    
       show = 'post'
+      
      
       postId = props.data.id;
       showSave = true;
@@ -383,10 +390,31 @@
     <div class="content">
       
 
-      
+      {#if data.settings.has_subcategories}
+         {#if cat.subcategories}
+         <ul class="nav nav-pills mb-3">
+           
+           <li class="nav-item">
+           
+             <a class="nav-link" class:active={activeSub==0} on:click={()=>activeSub=0}>All</a>
+           
+            
+           </li>
+           {#each cat.subcategories as sub, i}
+           
+           <li class="nav-item">
+          
+              <a class="nav-link" class:active={activeSub==sub.id} on:click={()=>activeSub=sub.id}>{sub.title}</a>
+        
+             
+            </li>
+           {/each}
+           </ul>
+         {/if}
+       {/if}
     
   
-      <SortablePosts bind:items={posts} bind:data bind:catId />
+      <SortablePosts bind:items={posts} bind:data bind:catId bind:activeSub />
     
     </div>
   </div>
@@ -501,9 +529,6 @@
         
         {#if data.settings.has_subcategories}
         
-        
-        
-    
        <SortableSubs bind:data bind:id={cat.id} />
         
         {/if}

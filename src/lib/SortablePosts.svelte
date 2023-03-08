@@ -4,10 +4,12 @@
 	export let items;
 	export let data;
 	export let catId;
+	export let activeSub;
 	let options = {handle: '.handle'}
 	
-	let cat = data.categories.filter(x=>x.id==catId)[0];
 	
+	
+
  
 	function onChange() {
 		console.log('changed')
@@ -15,7 +17,7 @@
 		console.log(items)
 		let nothere = data.posts.filter(x => x.category !== catId)
 		data.posts = items.concat(nothere);
-		// items = items;
+	
 		data = data;
 	}
 	
@@ -34,19 +36,23 @@
  
 </script>
 
+
+
 	
   <ul class="list-group entries-list">
  
 <Sortable {items}
 		  let:item={item}
 		  on:change={onChange} bind:options={options}>
-	<li class="list-group-item">
+	<li class="list-group-item" class:d-none={activeSub!==item.subcategory && activeSub !== 0}>
 	
 		
 		<div class="row">
 			<div class="col-8 text-truncate">
 				
+				{#if activeSub==0}
 				<i class="fas fa-grip-vertical handle"></i> &nbsp;&nbsp;
+				{/if}
 				
 				<a href="/post/{item.id}" data-navigo>
 				{#if item.title==''}Untitled{:else}{item.title.replace(/(<([^>]+)>)/gi, "")}{/if}
@@ -61,11 +67,8 @@
 			</div>
 			<div class="col-4 text-end">
 				
-				<!--
-				{#if item.subcategory}
-				<span class="badge rounded-pill bg-primary me-2">{submap[item.subcategory]}</span>
-				{/if}
-			-->
+			
+			
 		
 				
 			<i class="fas fa-trash" on:click={()=>deletePost(item.id)}></i>
