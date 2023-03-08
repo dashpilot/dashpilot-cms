@@ -33,7 +33,7 @@
  
   let posts;
   let items;
-  let catId = '1';
+  let catId;
   let cat;
   let postId;
   let action = 'edit';
@@ -46,6 +46,7 @@
   
   
   let activeSub = 0;
+  
 
   
   onMount(async () => {
@@ -417,8 +418,7 @@
          {/if}
        {/if}
     
-  
-  {data.posts[0].title}
+
       <SortablePosts bind:items bind:posts bind:data bind:catId bind:activeSub />
     
     </div>
