@@ -42,7 +42,11 @@ export let muted;
 	  }
 	  
 	  .muted .icon{
-		  background-color: #676BE7 !important;
+		  background-color: #6E757C !important;
+	  }
+	  
+	  .muted .h2{
+		 color: #6E757C !important;
 	  }
 	  
 	  .muted .text-success{
