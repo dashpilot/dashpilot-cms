@@ -75,7 +75,6 @@
 		</div>	
 		
 		
-		
 	</li>
 </Sortable>
 
