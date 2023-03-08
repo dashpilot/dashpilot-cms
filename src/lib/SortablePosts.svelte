@@ -15,9 +15,10 @@
 	
 		let nothere = data.posts.filter(x => x.category !== catId)
 		data.posts = items.concat(nothere);
-		data.posts = data.posts;
-		data = data;
 		
+		data = data;
+		items = data.posts.filter(x=>x.category==catId)
+		items = items;
 		console.log(data)
 	
 	}
