@@ -80,14 +80,14 @@ label {
 }
 
 .btn-save {
-  position: absolute;
+  position: fixed;
   top: 9px;
   right: 147px;
   z-index: 99999999;
 }
 
 .btn-publish {
-  position: absolute;
+  position: fixed;
   top: 9px;
   right: 17px;
   z-index: 99999999;
