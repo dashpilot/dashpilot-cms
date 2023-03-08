@@ -2,7 +2,6 @@
 	import Sortable from "svelte-sortable"
 	
 	export let items;
-	export let posts;
 	export let data;
 	export let catId;
 	export let activeSub;
@@ -19,7 +18,6 @@
 		
 		data = data;
 
-		console.log(data)
 	
 	}
 	

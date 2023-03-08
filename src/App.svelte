@@ -32,6 +32,7 @@
   let saved;
  
   let posts;
+  let items;
   let catId = '1';
   let cat;
   let postId;
@@ -74,7 +75,7 @@
       activeSub=0;
     
       catId = props.data.catid;
-      posts = data.posts.filter(x=>x.category==catId)
+    
       
     
       showSave = true;
@@ -85,6 +86,7 @@
       }
       
       cat = data.categories.filter(x=>x.id==catId)[0];
+      items = data.posts.filter(x=>x.category==catId);
   
       tab = "cat-"+props.data.catid;
       
@@ -417,7 +419,7 @@
     
   
   {data.posts[0].title}
-      <SortablePosts bind:items={posts} bind:posts bind:data bind:catId bind:activeSub />
+      <SortablePosts bind:items bind:posts bind:data bind:catId bind:activeSub />
     
     </div>
   </div>
