@@ -17,6 +17,9 @@
 		console.log(items)
 		let nothere = data.posts.filter(x => x.category !== catId)
 		data.posts = items.concat(nothere);
+		
+		console.log(catId)
+		console.log(data.posts)
 	
 		data = data;
 	}
@@ -36,7 +39,7 @@
  
 </script>
 
-
+{catId}
 
 	
   <ul class="list-group entries-list">
