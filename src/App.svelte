@@ -426,7 +426,10 @@
   </div>
  
   
-  <div class="col-md-4 min-vh-100 col-categories brdr-start">
+  <div class="col-md-4 min-vh-100 col-categories posts-side brdr-start">
+    
+    
+    <Card title="Number of posts" number="{items.length}" msg="&nbsp;in this category" icon="fa-bolt" icon2="fa-solid fa-tag" />
 
   </div>
     
@@ -701,6 +704,10 @@
   
   .col-categories{
   background-color: white;
+  }
+  
+  .posts-side{
+    padding: 19px;
   }
   
   .content{
