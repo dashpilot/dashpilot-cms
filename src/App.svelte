@@ -396,7 +396,7 @@
       
 
       {#if data.settings.has_subcategories}
-         {#if cat.subcategories}
+         {#if cat.subcategories.length}
          <ul class="nav nav-pills mb-3">
            
            <li class="nav-item">

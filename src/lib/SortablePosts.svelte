@@ -36,7 +36,7 @@
  
 </script>
 
-
+{#if items.length}
 	
   <ul class="list-group entries-list">
  
@@ -81,6 +81,11 @@
 </Sortable>
 
 </ul>
+
+{:else}
+<div class="alert alert-warning">No posts found</div>
+
+{/if}
 
   <style>
 	
