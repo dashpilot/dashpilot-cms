@@ -70,14 +70,14 @@ label {
 
 .btn-save {
   position: fixed;
-  top: 9px;
+  top: 11px;
   right: 147px;
   z-index: 99999999;
 }
 
 .btn-publish {
   position: fixed;
-  top: 9px;
+  top: 11px;
   right: 17px;
   z-index: 99999999;
 }

@@ -456,7 +456,7 @@
    <header>
    
  {#if data.settings.preview}    
- <button class="btn btn-dark" on:click="{()=>showPreview=true}"><i class="fas fa-binoculars"></i> &nbsp;Preview</button>
+ <button class="btn btn-dark" on:click="{()=>showPreview=true}"><i class="fas fa-binoculars"></i><span class="mob-hide"> &nbsp;Preview</span</button>
  {:else}
  <h5>Edit Post</h5>
  {/if}
