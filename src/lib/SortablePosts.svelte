@@ -13,15 +13,18 @@
  
 	function onChange() {
 		console.log('changed')
-		//`items` are mutated
-		console.log(items)
+	
 		let nothere = data.posts.filter(x => x.category !== catId)
 		data.posts = items.concat(nothere);
-		
-		console.log(catId)
-		console.log(data.posts)
 	
-		data = data;
+		
+		
+		setTimeout(()=>{
+			data = data;
+			console.log('updated')
+			// items = data.posts.filter(x => x.category == catId)
+		}, 100)
+		
 	}
 	
 	function deletePost(id){
