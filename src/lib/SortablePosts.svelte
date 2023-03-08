@@ -22,9 +22,9 @@
 		setTimeout(()=>{
 			data.posts = data.posts;
 			data = data;
-			console.log('updated')
+			console.log('updated1')
 			// items = data.posts.filter(x => x.category == catId)
-		}, 100)
+		}, 500)
 		
 	}
 	
