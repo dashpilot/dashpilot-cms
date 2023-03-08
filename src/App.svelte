@@ -75,7 +75,7 @@
       show = 'posts'
       activeSub=0;
     
-      catId = props.data.catid;
+      catId = parseInt(props.data.catid);
     
       
     
