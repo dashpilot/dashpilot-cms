@@ -4,10 +4,12 @@ export let number;
 export let msg;
 export let icon;	
 export let icon2;
+export let muted;
 </script>  
   
   
-   <div class="card card-stats mb-4 mb-xl-0">
+
+   <div class="card card-stats mb-4 mb-xl-0" class:muted={muted}>
 	<div class="card-body">
 	  <div class="row">
 		<div class="col text-truncate">
@@ -36,5 +38,14 @@ export let icon2;
 
 		  padding-top: 12px;
 		  text-align: center;
+		 
+	  }
+	  
+	  .muted .icon{
+		  background-color: #676BE7 !important;
+	  }
+	  
+	  .muted .text-success{
+		  color: #6E757C !important;
 	  }
   </style>

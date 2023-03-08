@@ -361,16 +361,16 @@
   
   <div class="row">
     <div class="col-md-4">
-      <Card title="Posts" bind:number={data.posts.length} msg="&nbsp;in {data.categories.length} categories" icon="fa-bolt" icon2="fa-tag" />
+      <Card title="Posts" bind:number={data.posts.length} msg="&nbsp;in {data.categories.length} categories" icon="fa-bolt" icon2="fa-tag" muted="" />
       
     </div>
     <div class="col-md-4">
      
-      <Card title="Latest Post" number="{latest.title}" msg="&nbsp; {count} words" icon="fa-clock" icon2="fa-solid fa-calculator" />
+      <Card title="Latest Post" number="{latest.title}" msg="&nbsp; {count} words" icon="fa-clock" icon2="fa-solid fa-calculator" muted="" />
     
     </div>
     <div class="col-md-4">
-      <Card title="Version" number="0.4.3" msg="&nbsp;up to date" icon="fa-rocket" icon2="fa-check" />
+      <Card title="Version" number="0.4.3" msg="&nbsp;up to date" icon="fa-rocket" icon2="fa-check"  muted="" />
       
     </div>
   </div>
@@ -445,7 +445,7 @@
     -->
     
 
-    <Card title="Number of posts" number="{items.length}" msg="&nbsp;in this category" icon="fa-bolt" icon2="fa-solid fa-tag" />
+    <Card title="Number of posts" number="{items.length}" msg="&nbsp;in this category" icon="fa-bolt" icon2="fa-solid fa-tag" muted="true" />
 
   </div>
     
