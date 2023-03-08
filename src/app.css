@@ -83,12 +83,14 @@ label {
   position: absolute;
   top: 9px;
   right: 147px;
+  z-index: 99999999;
 }
 
 .btn-publish {
   position: absolute;
   top: 9px;
   right: 17px;
+  z-index: 99999999;
 }
 
 .btn-preview {
@@ -159,11 +161,15 @@ small {
   main {
     padding-left: 55px !important;
   }
+
+  header {
+    left: 55px !important;
+  }
 }
 
 @media only screen and (max-width: 768px) {
-  .h-100 {
-    height: auto !important;
+  .min-vh-100 {
+    min-height: auto !important;
   }
 
   .sidebar {

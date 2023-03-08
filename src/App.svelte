@@ -396,7 +396,7 @@
       
 
       {#if data.settings.has_subcategories}
-         {#if cat.subcategories.length}
+         {#if cat.subcategories && cat.subcategories.length}
          <ul class="nav nav-pills mb-3">
            
            <li class="nav-item">
@@ -630,14 +630,28 @@
   
   main{
     padding-left: 200px;
+   
+  }
+  
+  main .row{
+    padding-top: 60px;
+  }
+  
+  header{
+  
+   position: fixed;
+   width: 100%;
+   left: 200px;
+   z-index: 9999999;
   }
   
   header{
     height: 60px;
-   
   }
   
   nav header{
+    position: relative;
+    height: 60px;
     border-bottom: 5px solid #333333;
   }
   
