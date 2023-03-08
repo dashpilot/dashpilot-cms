@@ -16,10 +16,11 @@
 	
 		let nothere = data.posts.filter(x => x.category !== catId)
 		data.posts = items.concat(nothere);
-	
+		
 		
 		
 		setTimeout(()=>{
+			data.posts = data.posts;
 			data = data;
 			console.log('updated')
 			// items = data.posts.filter(x => x.category == catId)
