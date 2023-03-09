@@ -52,7 +52,7 @@ function previewPost(){
 </div>
 
 <style>
-	.modal.modal-xl{
+	.backdrop .modal.modal-xl{
 		width: 100% !important;
 		height: 100% !important;
 	}
