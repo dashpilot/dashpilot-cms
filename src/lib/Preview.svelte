@@ -12,6 +12,7 @@ let post = data.posts.filter(x=>x.id==postId)[0]
 let preview;
 let remote_preview = cfg.live_url;
 
+/*
 function previewPost(){
 	
 	setTimeout(()=>{
@@ -26,6 +27,7 @@ function previewPost(){
 	}, 50)
 
 }
+*/
 
 </script>
 
@@ -41,7 +43,7 @@ function previewPost(){
 	  <div class="modal-body p-0">
 	
 
-		<iframe src="{remote_preview}" width="100%" height="100%" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
+		<iframe src="{remote_preview}" width="100%" height="100%" id="preview-frame" class="fade-in"></iframe>
 
 
 	  </div>
