@@ -31,8 +31,8 @@ function previewPost(){
 
 
 <div class="backdrop" in:fade={{duration: 700}} out:fade={{duration: 200}}>
-<div class="modal modal-xl" tabindex="-1" style="display: block;">
-  <div class="modal-dialog">
+<div class="modal" tabindex="-1" style="display: block;">
+  <div class="modal-dialog modal-fullscreen">
 	<div class="modal-content">
 	  <div class="modal-header">
 		<h5 class="modal-title">Preview</h5>
@@ -52,19 +52,12 @@ function previewPost(){
 </div>
 
 <style>
-	.backdrop .modal.modal-xl{
-		width: 100% !important;
-		height: 100% !important;
-	}
 	
 	.modal-header{
+		height: 60px;
 		border-bottom: 5px solid black;
 	}
 	
-	.modal-body{
-		min-height: 600px;
-	
-	}
 	
 	
 	.fade-in { animation: fadeIn 2s; }
