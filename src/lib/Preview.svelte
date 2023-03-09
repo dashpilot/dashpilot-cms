@@ -10,7 +10,7 @@ export let postId;
 let post = data.posts.filter(x=>x.id==postId)[0]
 
 let preview;
-let remote_preview = cfg.live_url+"/preview";
+let remote_preview = cfg.live_url;
 
 function previewPost(){
 	
