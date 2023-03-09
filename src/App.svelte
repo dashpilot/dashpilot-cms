@@ -291,6 +291,11 @@
     });
   }
   
+  function preview(){
+    save();
+    showPreview=true;
+  }
+  
   function publish(){
     save();
     showPublish=true;
@@ -305,11 +310,15 @@
  {#if showSave}
  
 
+<div class="saveBtns">
+ <button class="btn btn-dark" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+ 
+ {#if cfg.live_url}    
+  <button class="btn btn-dark" on:click="{preview}"><i class="fas fa-binoculars"></i><span class="mob-hide"> &nbsp;&nbsp;Save &amp; View</span></button>
+  {/if}
 
- <button class="btn btn-dark btn-save" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
-
- <button class="btn btn-dark btn-publish" on:click="{publish}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
-
+ <button class="btn btn-dark" on:click="{publish}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
+</div>
  
  {/if}
  
@@ -455,11 +464,10 @@
     {#if show=='post'}
    <header>
    
- {#if cfg.live_url}    
- <button class="btn btn-dark" on:click="{()=>showPreview=true}"><i class="fas fa-binoculars"></i><span class="mob-hide"> &nbsp;Preview</span></button>
- {:else}
+
+
  <h5>Edit Post</h5>
- {/if}
+
 
  
  </header>
@@ -672,7 +680,7 @@
   main header{
     border-bottom: 5px solid black;
     background-color: white;
-    padding: 11px 20px;
+    padding: 8px 20px;
   }
   
   nav ul{
