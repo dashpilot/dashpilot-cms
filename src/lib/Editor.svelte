@@ -22,7 +22,11 @@
 	curFields = curType.fields;
 
 	function updateSlug(){
-		data.posts[index].slug = slugify(data.posts[index].title, post.id);
+    if(data.settings.has_id){
+      data.posts[index].slug = slugify(data.posts[index].title, post.id);
+    }else{
+      data.posts[index].slug = slugify(data.posts[index].title, false);
+    }	
 	}
 	
 </script>
