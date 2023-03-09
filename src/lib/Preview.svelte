@@ -41,7 +41,7 @@ function previewPost(){
 	  <div class="modal-body p-0">
 	
 
-		<iframe src="{remote_preview}" width="100%" height="600" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
+		<iframe src="{remote_preview}" width="100%" height="100%" id="preview-frame" class="fade-in" on:load={previewPost}></iframe>
 
 
 	  </div>
@@ -52,7 +52,14 @@ function previewPost(){
 </div>
 
 <style>
-
+	.modal-xl{
+		width: 100%;
+		height: 100%;
+	}
+	
+	.modal-header{
+		border-bottom: 3px solid black;
+	}
 	
 	.modal-body{
 		min-height: 600px;
