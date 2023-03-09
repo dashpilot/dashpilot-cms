@@ -52,13 +52,13 @@ function previewPost(){
 </div>
 
 <style>
-	.modal-xl{
-		width: 100%;
-		height: 100%;
+	.modal.modal-xl{
+		width: 100% !important;
+		height: 100% !important;
 	}
 	
 	.modal-header{
-		border-bottom: 3px solid black;
+		border-bottom: 5px solid black;
 	}
 	
 	.modal-body{
