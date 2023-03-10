@@ -15,7 +15,7 @@
   import Preview from "./lib/Preview.svelte";
 
   
-  // import SortablePosts from "./lib/SortablePosts.svelte";
+  import SortablePosts from "./lib/SortablePosts.svelte";
   import SortableCategories from "./lib/SortableCategories.svelte";
   import SortableSubs from "./lib/SortableSubs.svelte";
   import ProfileCard from "./lib/ProfileCard.svelte";
@@ -112,6 +112,7 @@
       }
       
       catId = postExists.category;
+      items = data.posts.filter(x=>x.category==catId);
       
       tab = "cat-"+postExists.category;
       
@@ -181,14 +182,7 @@
    
     router.updatePageLinks()
   }
-  
-  function truncateString(str, no_words) {
-    str = str.replace(/(<([^>]+)>)/gi, "");
-    return str.split(" ").splice(0,no_words).join(" ").replace('**', '');
-  }
-  function stripTags(str){
-    return str.replace(/(<([^>]+)>)/gi, "");
-  }
+
   
  
   function latestPost(){
@@ -341,13 +335,7 @@
     
   }
   
-  function edit(id){
-    router.navigate("/post/"+id);
-    if(window.innerWidth<1024){
-      showPostList = false;
-      
-    }
-  }
+ 
 
   
 
@@ -380,10 +368,7 @@
       
       <a href="/" class:active={tab === 'dashboard'}  data-navigo><i class="fa-solid fa-gauge"></i> <span class="mob-hide">Dashboard</span></a></li>
 
-    <!--
-    <li><a href="/posts/{default_cat}" class:active={tab === 'posts'}  data-navigo><i class="fa-solid fa-bolt"></i> <span class="mob-hide">Posts</span></a></li>
-    -->
-    
+
     {#if data}
     {#each data.categories as item}
     <li><a on:click={()=>openFolder(item.id)} class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
@@ -409,31 +394,9 @@
 <!-- col 2 -->
 <div class="col-3 col2">
 
-  
-  <div class="list-group" id="post-list">
-    
- 
-    {#each data.posts.filter(x=>x.category==catId) as item}
-  
-    <a class="list-group-item" class:active2={postId==item.id} on:click={()=>edit(item.id)} data-navigo>
-      
-      <b>{stripTags(item.title)}</b>
-      <br>
-      <span>{truncateString(item.body, 7)}...</span>
-      
-    </a>
-  
-    {/each}
- 
-    
-    
-    <!--  class:active2="{curPostId === item.id}"
-      on:click={()=>curPostId=item.id} -->
-   
-  
-  </div>
-  
-
+{#key postId}
+<SortablePosts bind:items bind:data bind:postId bind:catId bind:router bind:activeSub />
+  {/key}
   
 </div>
 {/if}

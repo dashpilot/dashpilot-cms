@@ -1,10 +1,12 @@
 <script>
 	import Sortable from "svelte-sortable"
 	
+	export let postId;
 	export let items;
 	export let data;
 	export let catId;
 	export let activeSub;
+	export let router;
 	let options = {handle: '.handle'}
 	
 	
@@ -32,53 +34,49 @@
 		  }
 	  }
 	  
-	  
+	   
+	   function truncateString(str, no_words) {
+		 str = str.replace(/(<([^>]+)>)/gi, "");
+		 return str.split(" ").splice(0,no_words).join(" ").replace('**', '');
+	   }
+	   function stripTags(str){
+		 return str.replace(/(<([^>]+)>)/gi, "");
+	   } 
+	   
+	   function edit(id){
+		   router.navigate("/post/"+id);
+		   if(window.innerWidth<1024){
+			 showPostList = false;
+			 
+		   }
+		 }
  
 </script>
 
+
+
 {#if items.length}
 	
-  <ul class="list-group entries-list">
+  <div class="list-group" id="post-list">
  
 <Sortable {items}
 		  let:item={item}
 		  on:change={onChange} bind:options={options}>
-	<li class="list-group-item" class:d-none={activeSub!==item.subcategory && activeSub !== 0}>
+
 	
-		
-		<div class="row">
-			<div class="col-8 text-truncate">
-				
-			
-				<i class="fas fa-grip-vertical handle"></i> &nbsp;&nbsp;
-				
-				<a href="/post/{item.id}" data-navigo>
-				{#if item.title==''}Untitled{:else}{item.title.replace(/(<([^>]+)>)/gi, "")}{/if}
-				</a>
-				
-				{#if item.draft}
-				<span class="badge rounded-pill bg-secondary ms-2">draft</span>
-				{/if}
-				
-			
-				
-			</div>
-			<div class="col-4 text-end">
-				
-			
-			
-		
-				
-			<i class="fas fa-trash" on:click={()=>deletePost(item.id)}></i>
-				
-			</div>
-		</div>	
-		
-		
-	</li>
+	  
+		<a class="list-group-item handle" class:active2={postId==item.id} on:click={()=>edit(item.id)} data-navigo>
+		  
+		  <b>{stripTags(item.title)}</b>
+		  <br>
+		  <span>{truncateString(item.body, 7)}...</span>
+		  
+		</a>
+	  
+
 </Sortable>
 
-</ul>
+</div>
 
 {:else}
 <div class="text-center empty-container">
