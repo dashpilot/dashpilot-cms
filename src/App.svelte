@@ -182,6 +182,10 @@
     str = str.replace(/(<([^>]+)>)/gi, "");
     return str.split(" ").splice(0,no_words).join(" ");
   }
+  function stripTags(str){
+    return str.replace(/(<([^>]+)>)/gi, "");
+  }
+  
  
   function latestPost(){
     let highest_id = Math.max(...data.posts.map(x => x.id));
