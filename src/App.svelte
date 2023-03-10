@@ -214,8 +214,11 @@
     if(catPosts.length){
       highest_id = catPosts.at(0).id;
       //highest_id = Math.max(...catPosts.map(x => x.id));
+      return "post/"+highest_id;
+    }else{
+      return "posts/"+catId;
     }
-    return highest_id;
+    
   }
   
   async function addPost(){
@@ -362,7 +365,7 @@
     
     {#if data}
     {#each data.categories as item}
-    <li><a href="/post/{firstPost(item.id)}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
+    <li><a href="{firstPost(item.id)}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
     {/each}
     {/if}
     
@@ -453,17 +456,22 @@
     {#if show=='posts'}
 
     <header>
-   <button class="btn btn-dark mb-3" on:click={addPost}><i class="fas fa-plus"></i></button>
-     
+ 
+     <button class="btn btn-dark mb-3 ms-1" on:click={addPost}><i class="fas fa-plus"></i></button>
       </header>
   
     <div class="row g-0 min-vh-100">
-  
-    <div class="col-md-8 col-posts">
+
    
     <div class="content">
       
+      
+      <div class="text-center empty-container">
+      <i class="fa-regular fa-folder-open empty"></i>
+      <div>No posts found</div>
+      </div>
 
+<!--
       {#if data.settings.has_subcategories}
          {#if cat.subcategories && cat.subcategories.length}
          <ul class="nav nav-pills mb-3">
@@ -490,35 +498,12 @@
       {#key catId}
       <SortablePosts bind:items bind:data bind:catId bind:activeSub />
       {/key}
-    
-    </div>
-  </div>
- 
-  
-  <div class="col-md-4 min-vh-100 col-categories posts-side brdr-start">
-    
-  
-    <!--
-    <ul class="list-group">
-    {#each items.filter(x=>x.draft==true) as draft}
-    
-    <li class="list-group-item">
-      <a href="/post/{draft.id}" data-navigo>
-      {#if draft.title==''}Untitled{:else}{draft.title.replace(/(<([^>]+)>)/gi, "")}{/if}
-      </a>
-    </li>
-
-    
-    {/each}
-    </ul>
     -->
     
-
-    <Card title="Number of posts" number="{items.length}" msg="&nbsp;in this category" icon="fa-bolt" icon2="fa-solid fa-tag" muted="true" />
-
-  </div>
+    </div>
     
     </div>
+  
  {/if}
   
     {#if show=='post'}
@@ -526,7 +511,7 @@
    
 
 
- <h5>Edit Post</h5>
+  <button class="btn btn-dark mb-3 ms-1" on:click={addPost}><i class="fas fa-plus"></i></button>
 
 
  
@@ -536,7 +521,7 @@
       <div class="row g-0 h-fill">
     
     
-        <div class="content no-pad col-editor pb-5">
+        <div class="content no-pad col-editor pb-5 post-editor">
           
        
     <Editor bind:data bind:postId />
@@ -707,8 +692,12 @@
   }
   
   main{
-    padding-left: 500px;
+    padding-left: 200px;
    
+  }
+  
+  .post-editor{
+    padding-left: 320px !important;
   }
   
   main .row{
@@ -825,6 +814,19 @@
   
   #preview_css{
     height: 200px;
+  }
+  
+ 
+  
+  .empty-container{
+    color: #777;
+  }
+  
+  .empty{
+    font-size: 40px;
+    margin-top: 40px;
+    margin-bottom: 5px;
+   
   }
 
 </style>

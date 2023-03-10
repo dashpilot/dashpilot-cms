@@ -112,16 +112,6 @@
 		  .fa-trash{
 			  cursor: pointer;
 		  }
-		  
-		  .empty-container{
-			  color: #777;
-		  }
-		  
-		  .empty{
-			  font-size: 40px;
-			  margin-top: 40px;
-			  margin-bottom: 5px;
-			 
-		  }
+		
 		  
 	</style>
