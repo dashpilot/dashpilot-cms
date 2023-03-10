@@ -186,6 +186,10 @@ small {
   overflow-y: auto;
 }
 
+.post-editor {
+  padding-left: 340px !important;
+}
+
 @media only screen and (max-width: 1024px) {
   .col-categories {
     height: auto !important;
@@ -208,6 +212,15 @@ small {
 
   header {
     left: 55px !important;
+  }
+
+  .col2 {
+    left: 55px;
+    width: 100%;
+  }
+
+  .post-editor {
+    padding-left: 20px !important;
   }
 }
 

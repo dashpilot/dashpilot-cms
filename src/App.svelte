@@ -46,7 +46,7 @@
   
   
   let activeSub = 0;
-  
+  let showPostList = true;
 
   
   onMount(async () => {
@@ -208,18 +208,7 @@
     return highest_id+1;
   }
   
-  function firstPost(catId){
-    let highest_id = 0;
-    let catPosts = data.posts.filter(x=>x.category==catId);
-    if(catPosts.length){
-      highest_id = catPosts.at(0).id;
-      //highest_id = Math.max(...catPosts.map(x => x.id));
-      return "post/"+highest_id;
-    }else{
-      return "posts/"+catId;
-    }
-    
-  }
+
   
   async function addPost(){
     
@@ -329,6 +318,32 @@
   function closeDropDown(){
     document.querySelector('#cat-dropdown').classList.remove('show');
   }
+  
+  function openFolder(catId){
+    let highest_id = 0;
+    let catPosts = data.posts.filter(x=>x.category==catId);
+    let path;
+    if(catPosts.length){
+      highest_id = catPosts.at(0).id;
+      //highest_id = Math.max(...catPosts.map(x => x.id));
+      path = "post/"+highest_id;
+      
+    }else{
+      path = "posts/"+catId;
+    }
+    
+    router.navigate(path)
+    showPostList = true;
+    
+  }
+  
+  function edit(id){
+    router.navigate("/post/"+id);
+    if(window.innerWidth<1024){
+      showPostList = false;
+      
+    }
+  }
 
 </script>
 
@@ -365,7 +380,7 @@
     
     {#if data}
     {#each data.categories as item}
-    <li><a href="{firstPost(item.id)}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
+    <li><a on:click={()=>openFolder(item.id)} class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
     {/each}
     {/if}
     
@@ -384,7 +399,7 @@
   
 </nav>
 
-{#if show == 'post'}
+{#if show == 'post' && showPostList}
 <!-- col 2 -->
 <div class="col-3 col2">
 
@@ -394,7 +409,7 @@
  
     {#each data.posts.filter(x=>x.category==catId) as item}
   
-    <a class="list-group-item" class:active2={postId==item.id} href="/post/{item.id}" data-navigo>
+    <a class="list-group-item" class:active2={postId==item.id} on:click={()=>edit(item.id)} data-navigo>
       
       <b>{stripTags(item.title)}</b>
       <br>
@@ -696,9 +711,7 @@
    
   }
   
-  .post-editor{
-    padding-left: 340px !important;
-  }
+ 
   
   main .row{
     padding-top: 60px;

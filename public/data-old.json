@@ -92,7 +92,7 @@
       "title": "Post",
       "slug": "post",
       "fields": [
-        { "title": "body", "description": "", "type": "mde" },
+        { "title": "body", "description": "", "type": "rte" },
         { "title": "gallery", "description": "", "type": "gal" },
         { "title": "draft", "description": "", "type": "switch" },
         { "title": "subcategory", "description": "", "type": "subcategory" }
