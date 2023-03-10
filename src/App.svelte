@@ -351,13 +351,13 @@
  
 
 <div class="saveBtns">
- <button class="btn btn-dark" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> &nbsp;{:else}<i class="fas fa-save"></i> &nbsp;{/if}Save</button>
+ <button class="btn btn-dark" on:click="{save}">{#if saving}<i class="fas fa-spinner fa-spin"></i> {:else}<i class="fas fa-save"></i> {/if}<span class="mob-hide">&nbsp;Save</span></button>
  
  {#if cfg.live_url}    
   <button class="btn btn-dark" on:click="{preview}"><i class="fas fa-binoculars"></i><span class="mob-hide"> &nbsp;&nbsp;Save &amp; View</span></button>
   {/if}
 
- <button class="btn btn-dark" on:click="{publish}"><i class="fas fa-rocket"></i> &nbsp;Publish</button>
+ <button class="btn btn-dark" on:click="{publish}"><i class="fas fa-rocket"></i><span class="mob-hide"> &nbsp;Publish</span></button>
 </div>
  
  {/if}
