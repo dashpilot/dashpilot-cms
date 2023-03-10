@@ -20,6 +20,7 @@
 
 </script>
  
+ {post.title}
 
   {#each Object.keys(curFields) as key}
  

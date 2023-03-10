@@ -99,12 +99,15 @@
       
      
       postId = props.data.id;
+    
       showSave = true;
       
       let postExists = data.posts.filter(x=>x.id==postId)[0];
       if(!postExists){
         router.navigate('/posts/home')
       }
+      
+      catId = postExists.category;
       
       tab = "cat-"+postExists.category;
       
@@ -174,6 +177,11 @@
    
     router.updatePageLinks()
   }
+  
+  function truncateString(str, no_words) {
+    str = str.replace(/(<([^>]+)>)/gi, "");
+    return str.split(" ").splice(0,no_words).join(" ");
+  }
  
   function latestPost(){
     let highest_id = Math.max(...data.posts.map(x => x.id));
@@ -194,6 +202,16 @@
       highest_id = Math.max(...data.categories.map(x => x.id));
     }
     return highest_id+1;
+  }
+  
+  function firstPost(catId){
+    let highest_id = 0;
+    let catPosts = data.posts.filter(x=>x.category==catId);
+    if(catPosts.length){
+      highest_id = catPosts.at(0).id;
+      //highest_id = Math.max(...catPosts.map(x => x.id));
+    }
+    return highest_id;
   }
   
   async function addPost(){
@@ -304,7 +322,7 @@
   function closeDropDown(){
     document.querySelector('#cat-dropdown').classList.remove('show');
   }
-  
+
 </script>
 
  {#if showSave}
@@ -340,7 +358,7 @@
     
     {#if data}
     {#each data.categories as item}
-    <li><a href="/posts/{item.id}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
+    <li><a href="/post/{firstPost(item.id)}" class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
     {/each}
     {/if}
     
@@ -358,6 +376,44 @@
 
   
 </nav>
+
+{#if show == 'posts' || show == 'post'}
+<!-- col 2 -->
+<div class="col-3 col2">
+
+  
+  <div class="list-group" id="post-list">
+    
+ 
+    {#each data.posts.filter(x=>x.category==catId) as item}
+  
+    <a class="list-group-item" class:active2={postId==item.id} href="/post/{item.id}" data-navigo>
+      
+      <b>{item.title}</b>
+      <br>
+      <span>{truncateString(item.body, 7)}...</span>
+      
+    </a>
+  
+    {/each}
+ 
+    
+    
+    <!--  class:active2="{curPostId === item.id}"
+      on:click={()=>curPostId=item.id} -->
+   
+  
+  </div>
+  
+
+  
+</div>
+{/if}
+
+
+
+
+
 <main class="min-vh-100">
   
 {#if show=='dashboard'}
@@ -472,29 +528,26 @@
  
  </header>
       
+      {#key postId}
       <div class="row g-0 h-fill">
-      <div class="col-md-8 min-vh-100">
+    
     
         <div class="content no-pad col-editor pb-5">
           
        
     <Editor bind:data bind:postId />
+      <EditorSide bind:data bind:postId />
         
         </div>
         
       </div>
-      <div class="col-md-4 min-vh-100 editor-sidebar">
-       
-       {#if showPreview} 
-        <Preview bind:data bind:postId bind:showPreview />
-       {/if}
-
      
-    <EditorSide bind:data bind:postId />
-  
-   
-      </div>
-      </div>
+   {#if showPreview} 
+     <Preview bind:data bind:postId bind:showPreview />
+    {/if}
+
+      
+      {/key}
 
     {/if}
     
@@ -585,7 +638,6 @@
     
     {#if show=='settings'}
     <header>
-      
       <h5>Settings</h5>
     </header>
     
@@ -651,7 +703,7 @@
   }
   
   main{
-    padding-left: 200px;
+    padding-left: 500px;
    
   }
   

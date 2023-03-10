@@ -40,7 +40,7 @@
 
 
 
- 
+
   {#if curFields[key].type == 'rte'}
   
   {#if curFields[key].type !== 'txt'}
@@ -60,6 +60,7 @@
 	<Markdown bind:html={data.posts[index][curFields[key].title]} />
   
   {/if}
+
   
   
   

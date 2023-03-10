@@ -135,6 +135,57 @@ small {
   border-bottom: 1px solid #dfdfdf !important;
 }
 
+.col2 {
+  position: fixed;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 9999999;
+  left: 200px;
+  top: 60px;
+  width: 300px;
+}
+
+.col2 .list-group:nth-child(2) .list-group-item {
+  top: 63px;
+}
+
+.col2 {
+  background-color: white;
+  border-right: 1px solid #ddd;
+}
+
+.col2 .list-group-item {
+  padding: 20px;
+  border-radius: 0;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-left: 5px solid transparent;
+  height: 90px;
+}
+
+.col2 .list-group-item:hover {
+  background-color: #f8f8f8;
+  user-select: none;
+  cursor: pointer;
+  color: black;
+}
+
+.col2 .active2 {
+  background-color: #f8f8f8;
+  width: 100.5%;
+  border-left: 5px solid #656bf7;
+}
+
+.col2 {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 @media only screen and (max-width: 1024px) {
   .col-categories {
     height: auto !important;
