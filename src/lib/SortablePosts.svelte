@@ -7,11 +7,9 @@
 	export let catId;
 	export let activeSub;
 	export let router;
+	export let showPostList;
 	let options = {handle: '.handle'}
 	
-	
-
- 
 	function onChange() {
 		console.log('changed')
 	
@@ -55,7 +53,7 @@
 
 
 
-{#if items.length}
+{#if items.length && showPostList}
 	
   <div class="list-group" id="post-list">
  

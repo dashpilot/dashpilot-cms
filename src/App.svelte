@@ -371,7 +371,7 @@
 
     {#if data}
     {#each data.categories as item}
-    <li><a on:click={()=>openFolder(item.id)} class="indent" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
+    <li><a on:click={()=>openFolder(item.id)} class="indent text-truncate" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
     {/each}
     {/if}
     
@@ -395,7 +395,7 @@
 <div class="col-3 col2">
 
 {#key postId}
-<SortablePosts bind:items bind:data bind:postId bind:catId bind:router bind:activeSub />
+<SortablePosts bind:items bind:data bind:postId bind:catId bind:router bind:showPostList bind:activeSub />
   {/key}
   
 </div>
@@ -716,13 +716,21 @@
     margin: 0;
   }
   
+ .indent{
+   cursor: pointer;
+   display: block;
+   overflow: hidden !important;
+  max-width: 100%;
+ } 
+  
   nav ul li a{
     display: block;
     padding: 15px;
     padding-left: 20px;
     color: white;
     user-select: none;
-    cursor: pointer;
+ display: block;
+max-width: 200px;
   }
   
   nav a.active, nav a:hover{

@@ -67,7 +67,7 @@
     { "id": "2", "title": "About", "slug": "about", "type": "post" },
     {
       "id": "3",
-      "title": "Blog",
+      "title": "Another long title",
       "slug": "blog",
       "type": "post",
       "subcategories": [
