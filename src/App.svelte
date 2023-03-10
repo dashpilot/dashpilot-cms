@@ -104,7 +104,7 @@
       
       let postExists = data.posts.filter(x=>x.id==postId)[0];
       if(!postExists){
-        router.navigate('/posts/home')
+        router.navigate('/posts/1')
       }
       
       catId = postExists.category;
@@ -180,7 +180,7 @@
   
   function truncateString(str, no_words) {
     str = str.replace(/(<([^>]+)>)/gi, "");
-    return str.split(" ").splice(0,no_words).join(" ");
+    return str.split(" ").splice(0,no_words).join(" ").replace('**', '');
   }
   function stripTags(str){
     return str.replace(/(<([^>]+)>)/gi, "");
@@ -381,7 +381,7 @@
   
 </nav>
 
-{#if show == 'posts' || show == 'post'}
+{#if show == 'post'}
 <!-- col 2 -->
 <div class="col-3 col2">
 
