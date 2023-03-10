@@ -9,6 +9,7 @@
 	export let postId;
 	export let data; 
   export let curTab;
+ 
 	
 	let index;
 	let post;
@@ -95,13 +96,7 @@
 
 
     
-    {#if curFields[key].type == 'switch'}
-    
-    <label>{curFields[key].title.replaceAll('_', ' ')}</label>
-    <div class="form-check form-switch">
-       <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" bind:checked={data.posts[index][curFields[key].title]}>
-     </div>
-     {/if}
+
     
     
     
@@ -138,4 +133,18 @@
     {/each}
     
     {/if}
+    
+      
+{#if curTab=='settings'}   
+  {#each Object.keys(curFields) as key}
+    {#if curFields[key].type == 'switch'}
+    
+    <label>{curFields[key].title.replaceAll('_', ' ')}</label>
+    <div class="form-check form-switch">
+       <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" bind:checked={data.posts[index][curFields[key].title]}>
+     </div>
+     {/if}
+     
+     {/each}
+{/if}
 

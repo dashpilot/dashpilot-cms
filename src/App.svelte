@@ -541,7 +541,7 @@
     
     
         <div class="content no-pad col-editor pb-5 post-editor">
-          <Tabs bind:curTab />
+          <Tabs bind:curTab bind:postId bind:data />
        
     <Editor bind:data bind:postId bind:curTab />
       <!-- <EditorSide bind:data bind:postId />-->

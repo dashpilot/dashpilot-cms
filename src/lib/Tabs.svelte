@@ -1,13 +1,33 @@
 <script>
-
+  export let data;
+  export let postId;
 	export let curTab;
+  
+  let post = data.posts.filter(x=>x.id==postId)[0]
+  let cat = data.categories.filter(x=>x.id==post.category)[0]
+  let curType = data.types.filter(x=>x.slug==cat.type)[0];
+  let curFields = curType.fields;
+  
+  let hasImg = curFields.find(x => x.type === 'gal');
+  let hasOptions = curFields.find(x => x.type === 'txt');
+  let hasSettings = curFields.find(x => x.type === 'switch');
 </script>
 
 <div class="tabs">
   <ul>
 	<li class:is-active={curTab=='title'} on:click={()=>curTab='title'}><a>Title and body</a></li>
+  
+  {#if hasImg}
   <li class:is-active={curTab=='images'} on:click={()=>curTab='images'}><a>Images</a></li>
+  {/if}
+  
+  {#if hasOptions}
  <li class:is-active={curTab=='options'} on:click={()=>curTab='options'}><a>Options</a></li>
+ {/if}
+ 
+ {#if hasSettings}
+ <li class:is-active={curTab=='settings'} on:click={()=>curTab='settings'}><a>Settings</a></li>
+ {/if}
   </ul>
 </div>
 
