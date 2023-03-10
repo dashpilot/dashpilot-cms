@@ -15,7 +15,7 @@
 
 <div class="tabs">
   <ul>
-	<li class:is-active={curTab=='title'} on:click={()=>curTab='title'}><a>Title and body</a></li>
+	<li class:is-active={curTab=='title'} on:click={()=>curTab='title'}><a>Text</a></li>
   
   {#if hasImg}
   <li class:is-active={curTab=='images'} on:click={()=>curTab='images'}><a>Images</a></li>
