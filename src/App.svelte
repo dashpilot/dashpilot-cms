@@ -697,7 +697,7 @@
   }
   
   .post-editor{
-    padding-left: 320px !important;
+    padding-left: 340px !important;
   }
   
   main .row{
