@@ -31,6 +31,18 @@
       data.posts[index].slug = slugify(data.posts[index].title, false);
     }	
 	}
+  
+    
+  function deletePost(id){
+    var sure = confirm("Are you sure you wish to delete this item?")
+    if(sure){
+      let index = data.posts.findIndex(x=>x.id==id);
+      console.log(index)
+      data.posts.splice(index, 1);
+      data = data;
+      items = data.posts.filter(x=>x.category==catId)
+    }
+  }
 	
 </script>
  
@@ -146,5 +158,11 @@
      {/if}
      
      {/each}
+{/if}
+
+
+{#if curTab=='delete'}   
+<label>Delete</label>
+<button class="btn btn-outline-danger" on:click={()=>deletePost(postId)}><i class="fas fa-trash"><i/></button>
 {/if}
 

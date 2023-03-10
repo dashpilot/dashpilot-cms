@@ -28,6 +28,12 @@
  {#if hasSettings}
  <li class:is-active={curTab=='settings'} on:click={()=>curTab='settings'}><a>Settings</a></li>
  {/if}
+ 
+
+  </ul>
+  
+  <ul class="is-right">
+    <li class:is-active={curTab=='delete'} on:click={()=>curTab='delete'}><a>Delete</a></li>
   </ul>
 </div>
 
