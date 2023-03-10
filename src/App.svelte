@@ -393,7 +393,7 @@
   
     <a class="list-group-item" class:active2={postId==item.id} href="/post/{item.id}" data-navigo>
       
-      <b>{item.title}</b>
+      <b>{stripTags(item.title)}</b>
       <br>
       <span>{truncateString(item.body, 7)}...</span>
       
