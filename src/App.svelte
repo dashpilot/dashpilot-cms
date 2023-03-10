@@ -752,6 +752,8 @@
     padding: 15px;
     padding-left: 20px;
     color: white;
+    user-select: none;
+    cursor: pointer;
   }
   
   nav a.active, nav a:hover{
