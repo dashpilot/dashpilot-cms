@@ -63,9 +63,11 @@
 		  let:item={item}
 		  on:change={onChange} bind:options={options}>
 
-	
+
 	  
-		<a class="list-group-item handle" class:active2={postId==item.id} on:click={()=>edit(item.id)} data-navigo>
+		<a class="list-group-item" class:active2={postId==item.id} on:click={()=>edit(item.id)} data-navigo>
+			
+			<i class="fas fa-grip-vertical  handle"></i>
 		  
 		  <b>{stripTags(item.title)}</b>
 		  <br>
@@ -105,10 +107,19 @@
 		  
 		  .handle{
 			  cursor: grab;
+			  position: absolute;
+			  left: 15px;
+			  top: 32px;
+			  color: #CFD3DA;
+		  }
+		  
+		  .handle:hover{
+			  color: black;
 		  }
 		  
 		  .fa-trash{
 			  cursor: pointer;
+			  
 		  }
 		
 		  

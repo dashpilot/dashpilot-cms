@@ -165,7 +165,8 @@ small {
   overflow: hidden;
   text-overflow: ellipsis;
   border-left: 5px solid transparent;
-  height: 90px;
+  height: 85px;
+  padding-left: 40px !important;
 }
 
 .col2 .list-group-item:hover {
@@ -179,6 +180,7 @@ small {
   background-color: #f8f8f8;
   width: 100.5%;
   border-left: 5px solid #656bf7;
+  user-select: none;
 }
 
 .col2 {
