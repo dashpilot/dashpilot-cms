@@ -15,10 +15,12 @@
   import Preview from "./lib/Preview.svelte";
 
   
-  import SortablePosts from "./lib/SortablePosts.svelte";
+  // import SortablePosts from "./lib/SortablePosts.svelte";
   import SortableCategories from "./lib/SortableCategories.svelte";
   import SortableSubs from "./lib/SortableSubs.svelte";
   import ProfileCard from "./lib/ProfileCard.svelte";
+  
+  import Tabs from "./lib/Tabs.svelte";
 
   let data;
   let router;
@@ -47,6 +49,8 @@
   
   let activeSub = 0;
   let showPostList = true;
+  
+  let curTab = 'title';
 
   
   onMount(async () => {
@@ -537,10 +541,10 @@
     
     
         <div class="content no-pad col-editor pb-5 post-editor">
-          
+          <Tabs bind:curTab />
        
-    <Editor bind:data bind:postId />
-      <EditorSide bind:data bind:postId />
+    <Editor bind:data bind:postId bind:curTab />
+      <!-- <EditorSide bind:data bind:postId />-->
         
         </div>
         

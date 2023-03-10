@@ -140,7 +140,7 @@ small {
   height: 100%;
   overflow: hidden;
   overflow-y: auto;
-  z-index: 9999999;
+  z-index: 99;
   left: 200px;
   top: 60px;
   width: 320px;
