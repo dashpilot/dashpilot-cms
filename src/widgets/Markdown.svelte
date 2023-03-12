@@ -4,7 +4,7 @@
 <script>
 import EasyMDE from "easymde";
 import { onMount, onDestroy } from 'svelte';
-let key = Date.now();
+let key = Math.floor(Math.random() * 99999999999999);
 export let html;
 let easyMDE = false;
 
