@@ -49,7 +49,12 @@
 {#if curTab=='title'}
   
   <label>Title</label>
+  
+  {#if data.settings.update_slug}
   <input type="text" class="form-control" bind:value={data.posts[index].title} on:keyup={updateSlug}>
+  {:else}
+  <input type="text" class="form-control" bind:value={data.posts[index].title}>
+  {/if}
   
   {#each Object.keys(curFields) as key}
 
