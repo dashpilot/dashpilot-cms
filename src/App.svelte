@@ -622,7 +622,7 @@
      {#each Object.keys(data.settings) as key, val}
      <label>{key.replaceAll('_', ' ')}</label>
      
-     {#if key.includes('has')}
+     {#if key.includes('has') || key.includes('update')}
     
      
      <div class="form-check form-switch">
