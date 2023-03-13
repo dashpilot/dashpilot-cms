@@ -20,7 +20,9 @@
       element: element,
       extensions: [
         StarterKit,
-        Image,
+        Image.configure({
+          inline: true,
+        }),
         Link.configure({
           openOnClick: false,
         }),
