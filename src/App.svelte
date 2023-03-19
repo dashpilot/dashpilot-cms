@@ -33,6 +33,7 @@
   let posts;
   let items;
   let catId;
+  let catSlug;
   let cat;
   let postId;
   let action = 'edit';
@@ -88,7 +89,8 @@
       }
       
       cat = data.categories.filter(x=>x.id==catId)[0];
-      items = data.posts.filter(x=>x.category==cat.slug);
+      catSlug = cat.slug;
+      items = data.posts.filter(x=>x.category==catSlug);
       
       console.log('items:')
       console.log(items)
@@ -395,7 +397,7 @@
 <div class="col-3 col2">
 
 {#key postId}
-<SortablePosts bind:items bind:data bind:postId bind:catId bind:router bind:showPostList bind:activeSub />
+<SortablePosts bind:items bind:data bind:postId bind:catSlug bind:router bind:showPostList bind:activeSub />
   {/key}
   
 </div>

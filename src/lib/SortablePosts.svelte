@@ -4,8 +4,7 @@
 	export let postId;
 	export let items;
 	export let data;
-	export let catId;
-	export let activeSub;
+	export let catSlug;
 	export let router;
 	export let showPostList;
 	let options = {handle: '.handle'}
@@ -13,11 +12,11 @@
 	function onChange() {
 		console.log('changed')
 	
-		let nothere = data.posts.filter(x => x.category !== catId)
+		let nothere = data.posts.filter(x => x.category !== catSlug)
 		data.posts = items.concat(nothere);
 		
 		data = data;
-//items = data.posts.filter(x=>x.category==catId);
+
 	
 	}
 	
@@ -28,7 +27,7 @@
 			  console.log(index)
 			  data.posts.splice(index, 1);
 			  data = data;
-			  items = data.posts.filter(x=>x.category==catId)
+			  items = data.posts.filter(x=>x.category==catSlug)
 		  }
 	  }
 	  
