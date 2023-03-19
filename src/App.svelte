@@ -83,19 +83,18 @@
     
       showSave = true;
       
-      let catExists = data.categories.filter(x=>x.id==catId)[0];
+      let catExists = data.categories.filter(x=>x.slug==catSlug)[0];
       if(!catExists){
         router.navigate('/posts/1')
       }
       
-      cat = data.categories.filter(x=>x.id==catId)[0];
-      catSlug = cat.slug;
+      cat = catExists;
       items = data.posts.filter(x=>x.category==catSlug);
       
       console.log('items:')
       console.log(items)
   
-      tab = "cat-"+props.data.catid;
+      tab = "cat-"+props.data.catslug;
       
       hydrate()
     });
@@ -113,8 +112,9 @@
         router.navigate('/posts/1')
       }
       
-      catId = postExists.category;
-      items = data.posts.filter(x=>x.category==catId);
+      catSlug = postExists.category;
+      cat = data.categories.filter(x=>x.category==catSlug)[0];
+      items = data.posts.filter(x=>x.category==catSlug);
       
       tab = "cat-"+postExists.category;
       

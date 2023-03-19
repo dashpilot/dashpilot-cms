@@ -4,7 +4,7 @@
 	export let curTab;
   
   let post = data.posts.filter(x=>x.id==postId)[0]
-  let cat = data.categories.filter(x=>x.id==post.category)[0]
+  let cat = data.categories.filter(x=>x.slug==post.category)[0]
   let curType = data.types.filter(x=>x.slug==cat.type)[0];
   let curFields = curType.fields;
   
