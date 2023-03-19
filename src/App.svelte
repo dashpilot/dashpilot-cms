@@ -89,6 +89,9 @@
       
       cat = data.categories.filter(x=>x.id==catId)[0];
       items = data.posts.filter(x=>x.category==cat.slug);
+      
+      console.log('items:')
+      console.log(items)
   
       tab = "cat-"+props.data.catid;
       
