@@ -169,7 +169,7 @@ function imageExists(image_url){
 
 {#if item[key].length > 0}
 
-<ul class="list-group mt-2">
+<ul class="list-group mt-3">
 
 {#each item[key] as img, i}
 
