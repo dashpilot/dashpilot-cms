@@ -1,6 +1,3 @@
-<svelte:head>
- <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-</svelte:head>
 <script>
   import { onMount } from 'svelte';
   import { tick } from 'svelte';
@@ -91,7 +88,7 @@
       }
       
       cat = data.categories.filter(x=>x.id==catId)[0];
-      items = data.posts.filter(x=>x.category==catId);
+      items = data.posts.filter(x=>x.category==cat.slug);
   
       tab = "cat-"+props.data.catid;
       
