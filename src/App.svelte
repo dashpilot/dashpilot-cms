@@ -73,11 +73,11 @@
     });
     
    
-    router.on("/posts/:catid", async function (props) {
+    router.on("/posts/:catslug", async function (props) {
       show = 'posts'
       activeSub=0;
     
-      catId = props.data.catid;
+      catSlug = props.data.catslug;
     
       
     
@@ -319,9 +319,9 @@
     document.querySelector('#cat-dropdown').classList.remove('show');
   }
   
-  function openFolder(catId){
+  function openFolder(catSlug){
     let highest_id = 0;
-    let catPosts = data.posts.filter(x=>x.category==catId);
+    let catPosts = data.posts.filter(x=>x.category==catSlug);
     let path;
     if(catPosts.length){
       highest_id = catPosts.at(0).id;
@@ -329,7 +329,7 @@
       path = "post/"+highest_id;
       
     }else{
-      path = "posts/"+catId;
+      path = "posts/"+catSlug;
     }
     
     router.navigate(path)
@@ -373,7 +373,7 @@
 
     {#if data}
     {#each data.categories as item}
-    <li><a on:click={()=>openFolder(item.id)} class="indent text-truncate" class:active={tab === "cat-"+item.id}  data-navigo>{#if tab=="cat-"+item.id}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
+    <li><a on:click={()=>openFolder(item.slug)} class="indent text-truncate" class:active={tab === "cat-"+item.slug}  data-navigo>{#if tab=="cat-"+item.slug}<i class="fa-solid fa-folder-open"></i>{:else}<i class="fa-solid fa-folder"></i>{/if} <span class="mob-hide">{item.title}</span></a></li>
     {/each}
     {/if}
     
