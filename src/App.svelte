@@ -90,10 +90,7 @@
       
       cat = catExists;
       items = data.posts.filter(x=>x.category==catSlug);
-      
-      console.log('items:')
-      console.log(items)
-  
+   
       tab = "cat-"+props.data.catslug;
       
       hydrate()
@@ -457,34 +454,6 @@
       <div>No posts found</div>
       </div>
 
-<!--
-      {#if data.settings.has_subcategories}
-         {#if cat.subcategories && cat.subcategories.length}
-         <ul class="nav nav-pills mb-3">
-           
-           <li class="nav-item">
-           
-             <a class="nav-link" class:active={activeSub==0} on:click={()=>activeSub=0}>All</a>
-           
-            
-           </li>
-           {#each cat.subcategories as sub, i}
-           
-           <li class="nav-item">
-          
-              <a class="nav-link" class:active={activeSub==sub.id} on:click={()=>activeSub=sub.id}>{sub.title}</a>
-        
-             
-            </li>
-           {/each}
-           </ul>
-         {/if}
-       {/if}
-    
-      {#key catId}
-      <SortablePosts bind:items bind:data bind:catId bind:activeSub />
-      {/key}
-    -->
     
     </div>
     
