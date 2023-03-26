@@ -176,7 +176,7 @@ function imageExists(image_url){
 <li class="list-group-item">
 
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-4">
 
 
 
@@ -184,8 +184,8 @@ function imageExists(image_url){
 
 
   </div>
-  <div class="col-md-4">{#if window.config.imgTitle}<input type="text" class="form-control" bind:value="{item[key][i].title}" placeholder="{window.config.imgTitle}" />{/if}</div>
-  <div class="col-md-4">
+  <div class="col-4">{#if window.config.imgTitle}<input type="text" class="form-control" bind:value="{item[key][i].title}" placeholder="{window.config.imgTitle}" />{/if}</div>
+  <div class="col-4">
 
 <div class="btn-group float-end">
 
