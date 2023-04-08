@@ -68,7 +68,11 @@
 		  
 		  <b>{stripTags(item.title)}</b>
 		  <br>
+		  {#if item.body}
 		  <span>{truncateString(item.body, 7)}...</span>
+		  {:else}
+		  <span>No content yet</span>
+		  {/if}
 		  
 		</a>
 	  
