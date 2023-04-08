@@ -66,8 +66,10 @@
       tab = 'dashboard'
       showSave = false;
       
+      /*
       latest = latestPost();
       count = latest.body.split(" ").length;
+      */
       
       hydrate()
     });
@@ -413,7 +415,7 @@
   
 </header>
 <div class="content">
-  
+  <!--
   <div class="row">
     <div class="col-md-4">
       <Card title="Posts" bind:number={data.posts.length} msg="&nbsp;in {data.categories.length} categories" icon="fa-bolt" icon2="fa-tag" muted="" />
@@ -429,6 +431,8 @@
       
     </div>
   </div>
+  
+-->
   
 </div>
 
