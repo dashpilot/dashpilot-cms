@@ -93,10 +93,10 @@
  
      {#if curFields[key].type == 'gal'}
      
-    
+ 
      
      <label>{curFields[key].title.replaceAll('_', ' ')}</label>
-     <Gallery bind:item={data.posts[index][curFields[key].title]} bind:key={curFields[key].title} bind:settings={data.settings}  />
+     <Gallery bind:item={data.posts[index]} bind:key={curFields[key].title} bind:settings={data.settings}  />
      
      {/if}
      {/each}

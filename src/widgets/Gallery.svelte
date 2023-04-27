@@ -1,18 +1,12 @@
 <script>
 import { onMount } from 'svelte';
+// import {call_api} from "./../lib/Helpers.svelte"
 
 export let key;
 export let item;
 export let settings;
 
 let uploading = false;
-
-
-
-if(!item[key]){
-  item[key] = [];
-}
-
 
 
 
@@ -62,10 +56,10 @@ onMount(async () => {
 
       console.log(base64Image);
       let opts = {};
-      opts.path = 'img/'+Date.now()+".jpg";
+      opts.path = 'img/'+item.id+'-'+Date.now()+".jpg";
       opts.type = 'img';
       opts.data = base64Image;
-      call_api('/api/save', opts).then(function(res) {
+      call_api('api/save', opts).then(function(res) {
         if (res.ok) {
           console.log('Saved');
           let newItem = {'filename': res.filename};
@@ -105,7 +99,7 @@ function deleteImage(key, i){
 
     let opts = {};
     opts.filename = item[key][i].filename;
-    call_api('/api/delete', opts).then(function(res) {
+    call_api('api/delete', opts).then(function(res) {
       if (res.ok) {
         console.log('Deleted');
         item[key].splice(i, 1);
@@ -157,19 +151,14 @@ function imageExists(image_url){
 }
 </script>
 
-
-
 <input type="file" id="fileInput" class="fileInput" accept="image/*" data-name="{key}" />
 <button class="btn btn-outline-secondary" on:click="{() => clickSelect(key)}">
 
 
 {#if uploading}
-<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+<span class="fa-solid fa-spinner" role="status" aria-hidden="true"></span>
 {:else}
-<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-images" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M12.002 4h-10a1 1 0 0 0-1 1v8l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094l1.777 1.947V5a1 1 0 0 0-1-1zm-10-1a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2h-10zm4 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
-  <path fill-rule="evenodd" d="M4 2h10a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1v1a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2h1a1 1 0 0 1 1-1z"/>
-</svg>
+<i class="fa-solid fa-images"></i>
 {/if}
 
 &nbsp;Choose Image</button>
@@ -183,7 +172,7 @@ function imageExists(image_url){
 <li class="list-group-item">
 
 <div class="row">
-  <div class="col-4">
+  <div class="col-3">
 
 
 
@@ -191,23 +180,26 @@ function imageExists(image_url){
 
 
   </div>
-  <div class="col-4">{#if window.config.imgTitle}<input type="text" class="form-control" bind:value="{item[key][i].title}" placeholder="{window.config.imgTitle}" />{/if}</div>
-  <div class="col-4">
+  <div class="col-3">
+    
+    {#if settings.has_img_title}<input type="text" class="form-control mb-0" bind:value="{item[key][i].title}" placeholder="{settings.has_img_title}" />{/if}
+    
+  </div>
+ <div class="col-3">
+    {#if settings.has_img_link}<input type="text" class="form-control mb-0" bind:value="{item[key][i].link}" placeholder="{settings.has_img_link}" />{/if}
+
+</div>
+  <div class="col-3">
 
 <div class="btn-group float-end">
 
 <button class="btn btn-outline-secondary btn-icon" on:click="{() => moveDown(key, i)}">
-<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-caret-down" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-  <path fill-rule="evenodd" d="M3.204 5L8 10.481 12.796 5H3.204zm-.753.659l4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
-</svg>
+ <i class="fa-solid fa-caret-down"></i>
 </button>
 
 
   <button class="btn btn-outline-secondary btn-icon" on:click="{() => deleteImage(key, i)}">
-  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-  </svg>
+    <i class="fa-solid fa-trash"></i>
   </button>
 </div>
 
@@ -219,8 +211,6 @@ function imageExists(image_url){
 {/each}
 </ul>
 {/if}
-
-<br />
 
 
 
@@ -238,9 +228,6 @@ function imageExists(image_url){
   margin-bottom: 0;
 }
 
-.img-preview{
-  background-size: cover;
-}
 
 .box{
   display: inline-block;
@@ -257,7 +244,7 @@ function imageExists(image_url){
   padding-right: 15px;
 }
 
-.btn svg{
-  margin-top: -3px;
+.form-control{
+  margin-bottom: 0;
 }
 </style>
