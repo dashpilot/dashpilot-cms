@@ -211,9 +211,9 @@
   
   async function addPost(){
     
- 
+ console.log(catSlug)
     
-    let cat = data.categories.filter(x=>x.id==catId)[0];
+    let cat = data.categories.filter(x=>x.slug==catSlug)[0];
     let curType = data.types.filter(x=>x.slug==cat.type)[0];
   
     let newPost = {}
@@ -221,7 +221,7 @@
     
     newPost.title = "";
     newPost.id = id;
-    newPost.category = cat.id;
+    newPost.category = catSlug;
     newPost.type = curType;
     
     curType.fields.forEach(item=>{
