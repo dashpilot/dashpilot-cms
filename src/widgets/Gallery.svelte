@@ -6,11 +6,14 @@ export let item;
 export let settings;
 
 let uploading = false;
-/*
+
+
+
 if(!item[key]){
   item[key] = [];
 }
-*/
+
+
 
 
 onMount(async () => {
@@ -153,6 +156,8 @@ function imageExists(image_url){
 
 }
 </script>
+
+
 
 <input type="file" id="fileInput" class="fileInput" accept="image/*" data-name="{key}" />
 <button class="btn btn-outline-secondary" on:click="{() => clickSelect(key)}">
