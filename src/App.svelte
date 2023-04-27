@@ -222,6 +222,7 @@
     newPost.title = "";
     newPost.id = id;
     newPost.category = cat.id;
+    newPost.type = curType;
     
     curType.fields.forEach(item=>{
       if(item.type=='gal'){
