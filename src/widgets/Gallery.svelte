@@ -59,7 +59,7 @@ onMount(async () => {
       opts.path = 'img/'+item.id+'-'+Date.now()+".jpg";
       opts.type = 'img';
       opts.data = base64Image;
-      call_api('api/save', opts).then(function(res) {
+      call_api('/api/save', opts).then(function(res) {
         if (res.ok) {
           console.log('Saved');
           let newItem = {'filename': res.filename};
@@ -99,7 +99,7 @@ function deleteImage(key, i){
 
     let opts = {};
     opts.filename = item[key][i].filename;
-    call_api('api/delete', opts).then(function(res) {
+    call_api('/api/delete', opts).then(function(res) {
       if (res.ok) {
         console.log('Deleted');
         item[key].splice(i, 1);
