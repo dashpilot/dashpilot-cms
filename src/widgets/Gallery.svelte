@@ -6,10 +6,6 @@ export let item;
 export let settings;
 
 let uploading = false;
-if(!item[key]){
-  item[key] = [];
-}
-
 
 onMount(async () => {
 
