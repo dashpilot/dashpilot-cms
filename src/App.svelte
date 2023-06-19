@@ -66,11 +66,6 @@
       tab = 'dashboard'
       showSave = false;
       
-      /*
-      latest = latestPost();
-      count = latest.body.split(" ").length;
-      */
-      
       hydrate()
     });
     
