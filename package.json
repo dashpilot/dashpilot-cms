@@ -20,6 +20,7 @@
     "@tiptap/starter-kit": "^2.0.0-beta.218",
     "easymde": "^2.18.0",
     "navigo": "^8.11.1",
+    "node-fetch": "^3.3.1",
     "svelte-markdown": "^0.2.3",
     "svelte-sortable": "^0.1.0"
   }
